@@ -1,6 +1,6 @@
-Hello.
-This is my interpretation of various forms of user input.
-The list of forms will gradually expand.
+Hello.\
+This is my interpretation of various forms of user input.\
+The list of forms will gradually expand.\
 
 ### `npm start`
 Runs the app in the development mode.\
