@@ -8,9 +8,15 @@ a {text-decoration: none; color: inherit;}
 h1,h2,h3,h4,h5,h6 {font-weight: inherit; font-size: inherit;}
 
 :root{
-   --color-npm-background: #f7f7f7;
-   --color-npm-white: #fff;
-   --color-npm-gray: #000000b3;
-   --color-npm-dark-gray: #333333;
+  --basic-padding: 30px;
+  --basic-gap: 15px;
+  --secondary-gap: 10px;
+  --border-radius: 6px;
+
+  --basic-background-color: #22272e;
+  --secondary-background-color: #2d333b;
+  --color-light-gray: #abb6bcc9;
+
+  --transition: all 0.4s ease-in-out;
 }
 `
