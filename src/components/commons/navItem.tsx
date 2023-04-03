@@ -24,7 +24,7 @@ div{
   grid-area: lamp;
   height: 30px;
   width: 10px;
-  background-color: #ca4747;
+  background-color: var(--color-pink);
   opacity: 0;
   transition: var(--transition);
 }

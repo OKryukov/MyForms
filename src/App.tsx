@@ -14,7 +14,7 @@ grid-template-rows: 60px 1fr 60px;
 grid-template-areas:'header header' 'nav main' 'footer footer';
 grid-gap: var(--basic-gap);
 
-padding: var(--basic-padding);
+padding: var(--basic-gap) var(--basic-padding);
 background-color: var(--basic-background-color);
 
 header{
@@ -25,7 +25,6 @@ nav{
 }
 main{
   grid-area: main;
-  background-color: #f5f5f5;
 }
 footer{
   grid-area: footer;
