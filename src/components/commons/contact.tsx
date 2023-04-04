@@ -16,7 +16,7 @@ const ContactStyled = styled.div<{svgKeyFrames:Keyframes}>`
     & svg{
       animation-name: ${props=>props.svgKeyFrames};
       animation-duration: 0.5s;
-      animation-timing-function: ease-in-out
+      animation-timing-function: ease-in-out;
     }
   }
 `

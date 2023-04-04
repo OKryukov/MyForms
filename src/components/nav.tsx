@@ -10,6 +10,7 @@ grid-gap: var(--secondary-gap);
 .active{
   & div div{
     opacity: 1;
+    right: 0;
   }
 }
 `

@@ -8,8 +8,7 @@ display: grid;
 grid-template-columns: repeat(2, min-content);
 justify-content: end;
 svg{
-  width: 40px;
-  height: 40px;
+  width: 30px;
 }
 `
 export const Footer:FC = ()=>{

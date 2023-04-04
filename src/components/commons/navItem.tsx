@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom"
 
 const NavItemStyled = styled.div`
 display: grid;
-grid-template-columns: 30px 1fr 10px;
+grid-template-columns: 30px 1fr;
 grid-template-areas: 'logo name lamp';
 align-items: center;
 grid-gap: var(--secondary-gap);
 background-color: var(--color-light-gray);
 border-radius: var(--border-radius);
+position: relative;
 cursor: pointer;
 img{
   grid-area: logo;
@@ -23,10 +24,13 @@ span{
 div{
   grid-area: lamp;
   height: 30px;
-  width: 10px;
+  width: 15px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
   background-color: var(--color-pink);
   opacity: 0;
   transition: var(--transition);
+  position: absolute;
+  right: -30px;
 }
 `
 interface NavItemPropsI {

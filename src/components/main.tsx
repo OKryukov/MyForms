@@ -8,10 +8,6 @@ const MainStyled = styled.main`
 &>div{
   height: 100%;
 }
-& form{
-  min-height: 100%;
-  background-color: white;
-}
 `
 export const Main:FC = ()=>{
   return(

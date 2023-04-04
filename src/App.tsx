@@ -10,8 +10,8 @@ const StyledAPP = styled.div`
 height: 100vh;
 display: grid;
 grid-template-columns: 245px 1fr;
-grid-template-rows: 60px 1fr 60px;
-grid-template-areas:'header header' 'nav main' 'footer footer';
+grid-template-rows: 50px 1fr 50px;
+grid-template-areas:'header main' 'nav main' 'footer footer';
 grid-gap: var(--basic-gap);
 
 padding: var(--basic-gap) var(--basic-padding);

@@ -6,14 +6,15 @@ import { SignUpForm } from "./signUp";
 import { SignInForm } from "./signIn";
 
 const FormsStyled = styled.div`
-  
+display: grid;
+grid-template-rows: max-content 1fr;
 `
 export const NpmjsForm:FC = ()=>{
   return(
     <FormsStyled>
       <Switcher baseURL="/npmjs.com"/>
       <Routes>
-      <Route path="/" element={<Information/>}/>
+        <Route path="/" element={<Information/>}/>
         <Route path="/signup" element={<SignUpForm/>}/>
         <Route path="/signin" element={<SignInForm/>}/>
       </Routes>

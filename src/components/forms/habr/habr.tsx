@@ -11,10 +11,7 @@ const FormsStyled = styled.div`
 export const HabrForm:FC = ()=>{
   return(
     <FormsStyled>
-      <div className="switch">
-        <Switcher baseURL="/habr.com"/>
-      </div>
-      
+      <Switcher baseURL="/habr.com"/>
       <Routes>
         <Route path="/" element={<Information/>}/>
         <Route path="/signup" element={<SignUpForm/>}/>

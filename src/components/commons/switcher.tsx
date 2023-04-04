@@ -30,6 +30,35 @@ background-color:var(--secondary-background-color);
   transition: var(--transition);
   fill:${props=>props.isBaseURL && 'var(--color-pink)'}
 }
+& a{
+  position: relative;
+  z-index: 1;
+}
+& a span::after{
+  content: '';
+  height: 30px;
+  width: 15px;
+  background-color: var(--color-pink);
+  opacity: 1;
+  transition: var(--transition);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+}
+& .up::after{
+  border-radius: var(--border-radius) 0 0  var(--border-radius);
+  right: -15px;
+}
+& .active .up::after{
+  right: 0px;
+}
+& .in::after{
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  left: -15px;
+}
+& .active .in::after{
+  left: 0px;
+}
 `
 interface SwitcherPropsI{
   baseURL:string
@@ -41,13 +70,13 @@ export const Switcher:FC<SwitcherPropsI> = (props)=>{
   return(
     <SwitcherStyled isBaseURL={!isBaseURL}>
       <NavLink to={'signup'} onClick={event=>location === `${baseURL}/signup` && event.preventDefault()}>
-        <span>Sign Up Form</span>
+        <span className="up">Sign Up Form</span>
       </NavLink>
       <NavLink to={baseURL} onClick={event=>isBaseURL && event.preventDefault()}>
         <ForkSVG/>
       </NavLink>
       <NavLink to={'signin'} onClick={event=>location === `${baseURL}/signin` && event.preventDefault()}>
-        <span>Sign In Form</span>
+        <span className="in">Sign In Form</span>
       </NavLink>
     </SwitcherStyled>
   )
