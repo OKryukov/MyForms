@@ -44,7 +44,7 @@ position: relative;
 & button:hover{
   background-color: ${props=>props.isValid && "#efecec"};
 }
-& ::after{
+& fieldset::before{
   content: '';
   position: absolute;
   top: 0;
