@@ -18,7 +18,7 @@ grid-gap: var(--basic-gap);
 padding: var(--basic-gap) 0 var(--basic-gap) var(--basic-padding);
 background-color: var(--basic-background-color);
 
-header{
+&>header{
   grid-area: header;
 }
 nav:first-of-type{
