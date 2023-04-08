@@ -19,6 +19,6 @@ h1,h2,h3,h4,h5,h6 {font-weight: inherit; font-size: inherit;}
   --color-pink: #ca4747;
   --color-middle: #c12127;
 
-  --transition: all 0.4s ease-in-out;
+  --transition: all 0.3s ease-in-out;
 }
 `

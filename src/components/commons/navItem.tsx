@@ -5,10 +5,9 @@ import { NavLink } from "react-router-dom"
 const NavItemStyled = styled.div`
 display: grid;
 grid-template-columns: 30px 1fr;
-grid-template-areas: 'logo name lamp';
-align-items: center;
+grid-gap: var(--basic-gap);
+grid-template-areas: 'logo name';
 grid-gap: var(--secondary-gap);
-background-color: var(--color-light-gray);
 border-radius: var(--border-radius);
 position: relative;
 cursor: pointer;
@@ -20,9 +19,13 @@ img{
 }
 span{
   grid-area: name;
+  display: grid;
+  align-items: center;
+  background-color: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  padding: 0 var(--secondary-gap);
 }
 div{
-  grid-area: lamp;
   height: 30px;
   width: 15px;
   border-radius: var(--border-radius) 0 0 var(--border-radius);
@@ -42,7 +45,7 @@ export const NavItem:FC<NavItemPropsI> = (props)=>{
   return(
     <NavLink to={`/${title}`}>
       <NavItemStyled>
-        <img src={img}/>
+        <img src={img} alt="logo"/>
         <span>{title}</span>
         <div></div>
       </NavItemStyled>
