@@ -6,7 +6,6 @@ const ContactStyled = styled.div<{svgKeyFrames:Keyframes}>`
   grid-template-columns: 40px 150px;
   grid-gap: var(--secondary-gap);
   align-items: center;
-  color: white;
   cursor: pointer;
   transition: var(--transition);
   & svg{

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { v1 } from 'uuid'
-import { StateType } from '../bll/store';
+import { StateType } from '../BLL/store';
 
 const MyProfileStyled = styled.div`
 display: grid;

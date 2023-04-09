@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NavItem } from "./commons/navItem";
 
 const NavbarStyled = styled.nav`
+
 display: grid;
 grid-auto-rows: 30px;
 padding: var(--secondary-gap);

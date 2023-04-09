@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { ProfileSVG, GitHubSVG, TelegramSVG, RusLanguageSVG, EngLanguageSVG, ThemeMoonSVG, ThemeSunSVG, } from "./commons/svgStorage";
 import { useSelector, useDispatch } from "react-redux";
 
-import { StateType } from "../bll/store";
-import { actionCreators } from "../bll/decore";
+import { StateType } from "../BLL/store";
+import { themeActionCreators } from "../BLL/themeReducer";
+import { npmjsActionCreators } from "../BLL/npmjsReducer";
 
 const LinksStyled = styled.nav`
 display: grid;
@@ -44,13 +45,14 @@ grid-template-areas: 'links' '.' 'settings';
 `
 export const Links:FC = ()=>{
   const isEnglish = useSelector((state:StateType)=>state.profile.language === 'English')
-  const isDark = useSelector((state:StateType)=>state.decor.theme === 'dark')
+  const isDark = useSelector((state:StateType)=>state.theme.theme === 'dark')
   const dispath = useDispatch()
   const themeHandler = ()=>{
-    dispath(actionCreators.switchThemeAC())
+    dispath(themeActionCreators.switchThemeAC())
+    dispath(npmjsActionCreators.asyncLoginAC())
   }
   const languageHandler = ()=>{
-    dispath(actionCreators.switchLanguageAC())
+    dispath(themeActionCreators.switchLanguageAC())
   }
 
   return(

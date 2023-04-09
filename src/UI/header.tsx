@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { NavLink } from "react-router-dom";
-import styled  from "styled-components";
+import styled from "styled-components";
 import { StartSVG } from "./commons/svgStorage";
 
 const HeaderStyled = styled.header`
@@ -20,7 +20,6 @@ cursor: pointer;
   width: 30px;
   transition: var(--transition);
 }
-
 `
 export const Header:FC = ()=>{
   return(
