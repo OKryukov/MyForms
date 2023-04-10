@@ -2,7 +2,6 @@ import { FC } from "react"
 import styled from "styled-components";
 
 const SVGStyled = styled.svg.attrs({xmlns:"http://www.w3.org/2000/svg", viewBox:"0 0 16 16"})`
-fill: white;
 `
 //Header
 export const StartSVG:FC = () => {

@@ -1,7 +1,9 @@
+import Animalpng from'./images/npmjsAnimal.png'
 const initialState = {
   isAutch: false,
+  animal: Animalpng,
 }
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 export const AT = {
   LOGIN: 'LOGIN',

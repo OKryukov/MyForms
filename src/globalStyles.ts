@@ -17,6 +17,7 @@ h1,h2,h3,h4,h5,h6 {font-weight: inherit; font-size: inherit;}
   --secondary-background-color: #2d333b;
   --color-light-gray: #abb6bcc9;
   --color-pink: #ca4747;
+  --color-light-green: #97b1ab;
   --color-middle: #c12127;
 
   --transition: all 0.3s ease-in-out;

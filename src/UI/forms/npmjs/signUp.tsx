@@ -6,6 +6,7 @@ import { InputStyled } from "./input";
 
 
 const SignUpFormsStyled = styled.form<{errors:any, isValid:boolean}>`
+border-radius: var(--border-radius);
 display: grid;
 justify-content: center;
 align-content: center;

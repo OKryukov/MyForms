@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import { ThemeType } from './BLL/themeReducer';
 import { Main } from './UI/main';
-import { Header } from './UI/header';
+import { Home } from './UI/home';
 import { Footer } from './UI/footer';
 import { Navbar } from './UI/nav';
 import { Links } from './UI/links';
@@ -15,18 +15,20 @@ height: 100vh;
 display: grid;
 grid-template-columns: 245px 1fr 50px;
 grid-template-rows: 50px 1fr 50px;
-grid-template-areas:'header main links' 'nav main links' 'footer footer links';
+grid-template-areas:'home main links' 'nav main links' 'footer main links';
 grid-gap: var(--basic-gap);
-padding: var(--basic-gap) 0 var(--basic-gap) var(--basic-padding);
+padding: var(--basic-gap) 0 var(--basic-gap) var(--basic-gap);
 background-color: ${({theme})=>theme.wbc};
 transition: var(--transition);
 &>header{
-  grid-area: header;
-  background-color: ${({theme})=>theme.header.bc};
+  grid-area: home;
+  background-color: ${({theme})=>theme.home.bc};
   svg{
-    fill: ${({theme})=>theme.header.fill};
+    fill: ${({theme})=>theme.home.fill};
+    transition: var(--transition);
   }
 }
+
 nav:first-of-type{
   grid-area: nav;
   background-color: ${({theme})=>theme.nav.bc};
@@ -37,16 +39,21 @@ nav:last-of-type{
   color: ${({theme})=>theme.links.c};
   svg{
     fill: ${({theme})=>theme.links.fill};
+    transition: var(--transition);
   }
 }
 main{
   grid-area: main;
 }
 
-footer{
+&>footer{
   grid-area: footer;
   background-color: ${({theme})=>theme.footer.bc};
   color: ${({theme})=>theme.footer.c};
+  svg{
+    fill: ${({theme})=>theme.links.fill};
+    transition: var(--transition);
+  }
 }
 &>*{
   transition: var(--transition);
@@ -61,7 +68,7 @@ export const App: FC = () => {
   const theme = useSelector((state:StateType)=>state.theme)
   return (
     <StyledAPP theme={theme}>
-      <Header />
+      <Home />
       <Navbar />
       <Main />
       <Links/>

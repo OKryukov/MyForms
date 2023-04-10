@@ -3,14 +3,16 @@ import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { ForkSVG } from "./svgStorage";
 
-const SwitcherStyled = styled.div<{isBaseURL:boolean}>`
+const SwitcherStyled = styled.div.attrs({className:'npmjs__switcher'})<{isBaseURL:boolean}>`
+transition: var(--transition);
 display: grid;
 grid-template-columns: 225px 30px 225px;
 grid-auto-rows: 30px;
 justify-content: center;
 grid-gap: var(--secondary-gap);
 padding: var(--secondary-gap);
-background-color:var(--secondary-background-color);
+border-radius: var(--border-radius);
+margin-bottom: var(--basic-gap);
 &>*{
   width: 100%;
   height: 100%;

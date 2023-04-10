@@ -4,14 +4,25 @@ import styled from "styled-components";
 import { Switcher } from "../../commons/switcher";
 import { SignUpForm } from "./signUp";
 import { SignInForm } from "./signIn";
+import { useSelector } from "react-redux";
+import { StateType } from "../../../BLL/store";
+import { ThemeType } from "../../../BLL/themeReducer";
+import { Information } from "./information";
 
-const FormsStyled = styled.div`
+const FormsStyled = styled.div<({theme:ThemeType})>`
 display: grid;
 grid-template-rows: max-content 1fr;
+.npmjs__switcher{
+  background-color: ${({theme})=>theme.main.bc};
+}
+.npmjs__information{
+  background-color: ${({theme})=>theme.main.bc};
+}
 `
 export const NpmjsForm:FC = ()=>{
+  const theme = useSelector((state:StateType)=>state.theme)
   return(
-    <FormsStyled>
+    <FormsStyled theme={theme}>
       <Switcher baseURL="/npmjs.com"/>
       <Routes>
         <Route path="/" element={<Information/>}/>
@@ -19,17 +30,5 @@ export const NpmjsForm:FC = ()=>{
         <Route path="/signin" element={<SignInForm/>}/>
       </Routes>
     </FormsStyled>
-  )
-}
-
-const InformationStyled = styled.div`
-  background-color: var(--secondary-background-color);
-  height: 100%;
-`
-const Information:FC = ()=>{
-  return(
-    <InformationStyled>
-      Bla bla bla
-    </InformationStyled>
   )
 }

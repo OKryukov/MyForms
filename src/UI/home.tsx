@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { StartSVG } from "./commons/svgStorage";
 
-const HeaderStyled = styled.header`
+const HomeStyled = styled.header`
 display: grid;
 grid-gap: var(--basic-gap);
 padding: var(--secondary-gap);
@@ -21,12 +21,12 @@ cursor: pointer;
   transition: var(--transition);
 }
 `
-export const Header:FC = ()=>{
+export const Home:FC = ()=>{
   return(
-    <HeaderStyled>
+    <HomeStyled>
       <NavLink to="/">
         <StartSVG/>
       </NavLink>
-    </HeaderStyled>
+    </HomeStyled>
   )
 }

@@ -5,15 +5,19 @@ import { put,takeEvery } from 'redux-saga/effects'
 const delay = (ms:number)=> new Promise(res=>setTimeout(res,ms))
 
 function* Worker(){
-  yield delay(100)
-  yield put(themeActionCreators.switchHeaderThemeAC())
-  yield delay(100)
+  yield delay(10)
+  yield put(themeActionCreators.switchHomeThemeAC())
+  yield delay(50)
   yield put(themeActionCreators.switchNavThemeAC())
-  yield delay(100)
+  yield delay(50)
   yield put(themeActionCreators.switchFooterThemeAC())
-  yield delay(100)
+  yield delay(50)
   yield put(themeActionCreators.switchLinksThemeAC())
-  yield delay(30)
+  yield delay(50)
+  yield put(themeActionCreators.switchHeaderThemeAC())
+  yield delay(50)
+  yield put(themeActionCreators.switchMainrThemeAC())
+  yield delay(50)
   yield put(themeActionCreators.switchBackThemeAC())
 }
 
