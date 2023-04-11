@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import { useSelector } from "react-redux";
-import { StateType } from './BLL/store';
 import styled from 'styled-components';
 import { GlobalStyles } from './globalStyles';
-import { ThemeType } from './BLL/themeReducer';
 import { Main } from './UI/main';
 import { Home } from './UI/home';
 import { Footer } from './UI/footer';
 import { Navbar } from './UI/nav';
 import { Links } from './UI/links';
 
-const StyledAPP = styled.div<{theme:ThemeType}>`
+import { StateType} from './BLL/store';
+import { ThemeProvider } from 'styled-components';
+import { useSelector } from 'react-redux';
+import { darkTheme, lightTheme } from './BLL/themeReducer';
+
+const StyledAPP = styled.div`
 height: 100vh;
 display: grid;
 grid-template-columns: 245px 1fr 50px;
@@ -18,27 +20,27 @@ grid-template-rows: 50px 1fr 50px;
 grid-template-areas:'home main links' 'nav main links' 'footer main links';
 grid-gap: var(--basic-gap);
 padding: var(--basic-gap) 0 var(--basic-gap) var(--basic-gap);
-background-color: ${({theme})=>theme.wbc};
+background-color: ${({theme})=>theme.colors.wbc};
 transition: var(--transition);
 &>header{
   grid-area: home;
-  background-color: ${({theme})=>theme.home.bc};
+  background-color: ${({theme})=>theme.colors.bc};
   svg{
-    fill: ${({theme})=>theme.home.fill};
+    fill: ${({theme})=>theme.colors.fill};
     transition: var(--transition);
   }
 }
 
 nav:first-of-type{
   grid-area: nav;
-  background-color: ${({theme})=>theme.nav.bc};
+  background-color: ${({theme})=>theme.colors.bc};
 }
 nav:last-of-type{
   grid-area: links;
-  background-color: ${({theme})=>theme.links.bc};
-  color: ${({theme})=>theme.links.c};
+  background-color: ${({theme})=>theme.colors.bc};
+  color: ${({theme})=>theme.colors.wbc};
   svg{
-    fill: ${({theme})=>theme.links.fill};
+    fill: ${({theme})=>theme.colors.fill};
     transition: var(--transition);
   }
 }
@@ -48,10 +50,10 @@ main{
 
 &>footer{
   grid-area: footer;
-  background-color: ${({theme})=>theme.footer.bc};
-  color: ${({theme})=>theme.footer.c};
+  background-color: ${({theme})=>theme.colors.bc};
+  color: ${({theme})=>theme.colors.wbc};
   svg{
-    fill: ${({theme})=>theme.links.fill};
+    fill: ${({theme})=>theme.colors.fill};
     transition: var(--transition);
   }
 }
@@ -63,17 +65,18 @@ main{
   background-color:var(--secondary-background-color);
 }
 `
-
 export const App: FC = () => {
-  const theme = useSelector((state:StateType)=>state.theme)
+  const sttheme = useSelector((state:StateType)=>state.theme.current)
   return (
-    <StyledAPP theme={theme}>
-      <Home />
-      <Navbar />
-      <Main />
-      <Links/>
-      <Footer />
-      <GlobalStyles />
-    </StyledAPP>
+    <ThemeProvider theme={sttheme === 'light' ? darkTheme : lightTheme}>
+      <StyledAPP>
+        <Home />
+        <Navbar />
+        <Main />
+        <Links />
+        <Footer />
+        <GlobalStyles />
+      </StyledAPP>
+    </ThemeProvider>
   )
 }

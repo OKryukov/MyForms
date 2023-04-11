@@ -45,14 +45,13 @@ grid-template-areas: 'links' '.' 'settings';
 `
 export const Links:FC = ()=>{
   const isEnglish = useSelector((state:StateType)=>state.profile.language === 'English')
-  const isDark = useSelector((state:StateType)=>state.theme.theme === 'dark')
+  const isDark = useSelector((state:StateType)=>state.theme.current === 'dark')
   const dispath = useDispatch()
   const themeHandler = ()=>{
-    dispath(themeActionCreators.switchThemeAC())
     dispath(npmjsActionCreators.asyncLoginAC())
   }
   const languageHandler = ()=>{
-    dispath(themeActionCreators.switchLanguageAC())
+    dispath(themeActionCreators.languageAC())
   }
 
   return(

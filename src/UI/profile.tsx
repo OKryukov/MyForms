@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { v1 } from 'uuid'
 import { StateType } from '../BLL/store';
-import { ThemeType } from '../BLL/themeReducer';
 
-const MyProfileStyled = styled.div<{theme:ThemeType}>`
+const MyProfileStyled = styled.div`
 display: grid;
 grid-template-rows: 50px 1fr;
 grid-gap: var(--basic-gap);
@@ -13,7 +12,7 @@ grid-template-areas: 'header' 'main';
 
 header{
   grid-area: header;
-  background-color: ${(({theme})=>theme.header.bc)};
+  background-color: ${({theme})=>theme.colors.bc};
   transition: var(--transition);
 }
 main{
@@ -27,7 +26,7 @@ main{
   '. .'
   'skillTitle skillTitle'
   'skills skills';
-  background-color: ${({theme})=>theme.main.bc};
+  background-color: ${({theme})=>theme.colors.bc};
   transition: var(--transition);
 }
 & >*{
@@ -82,13 +81,13 @@ main{
 `
 
 export const MyProfile:FC = ()=>{
-  const theme = useSelector((state:StateType)=>state.theme)
   const data = useSelector((state:StateType)=> state.profile)
   const isEnglish = data.language === 'English'
   const profile = useSelector((state:StateType)=>isEnglish? state.profile.data.eng : state.profile.data.rus)
   const skills = data.skills.map(skill=><div key={v1()}><span>{skill}</span></div>)
+  console.log("Перерисовка компоненты");
   return(
-    <MyProfileStyled theme={theme}>
+    <MyProfileStyled>
       <header>Some text</header>
       <main>
         <div className='photo'>

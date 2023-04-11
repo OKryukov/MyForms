@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { InputStyled } from "./input";
 import { useSelector } from "react-redux";
-import { InitialStateType } from "../../../BLL/npmjsReducer";
 import { StateType } from "../../../BLL/store";
 
 
