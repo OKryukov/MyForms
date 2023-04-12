@@ -6,9 +6,7 @@ import { HabrForm } from "./forms/habr/habr";
 import { MyProfile } from "./profile";
 
 const MainStyled = styled.main`
-&>div{
-  height: 100%;
-}
+grid-area: main;
 `
 export const Main:FC = ()=>{
   return(

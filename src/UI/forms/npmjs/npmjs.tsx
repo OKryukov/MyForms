@@ -7,11 +7,9 @@ import { SignInForm } from "./signIn";
 import { Information } from "./information";
 
 const FormsStyled = styled.div`
+height: 100%;
 display: grid;
 grid-template-rows: max-content 1fr;
-.npmjs__switcher{
-  background-color: ${({theme})=>theme.colors.bc};
-}
 .npmjs__information{
   background-color: ${({theme})=>theme.colors.bc};
 }

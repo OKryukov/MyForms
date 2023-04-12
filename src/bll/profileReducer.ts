@@ -29,16 +29,16 @@ const initialState = {
 export type InitialStateType = typeof initialState
 
 const AT = {
-  SWITCH_LANGUAGE: 'SWITCH_LANGUAGE',
+  LANGUAGE: 'LANGUAGE',
 } as const
 const actionCreators ={
-  switchLanguageAC(){return {type: AT.SWITCH_LANGUAGE}},
+  switchLanguageAC(){return {type: AT.LANGUAGE}},
 }
 type ActionsTypes = ReturnType<typeof actionCreators[keyof typeof actionCreators]>
 
 export const profileReducer = ( state = initialState, action:ActionsTypes):InitialStateType =>{
   switch(action.type){
-    case AT.SWITCH_LANGUAGE:
+    case AT.LANGUAGE:
       return {...state, language:`${state.language === 'Russian'? 'English' : 'Russian'}`}
     default:
       return state

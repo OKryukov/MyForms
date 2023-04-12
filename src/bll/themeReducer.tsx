@@ -5,13 +5,26 @@ export enum ThemeEnum  {
 }
 export interface ITheme {
   colors:{
+    pink: string
+    lightGray: string
     wbc: string
     bc: string
+    c: string
     hover: string
     fill: string
   },
+  gaps:{
+    extraLarge: string,
+    large: string,
+    medium: string,
+    small: string,
+  },
+  borrad:{
+    base: string,
+    minor: string,
+  },
   trans:{
-    transition: string
+    base: string
   },
   media: {
     extraLarge: string
@@ -22,8 +35,22 @@ export interface ITheme {
 }
 
 const baseTheme = {
+  colors:{
+    pink: '#ca4747',
+    lightGray: '#abb6bcc9',
+  },
   trans:{
-    transition: 'all 0.3s ease-in-out',
+    base: 'all 0.3s ease-in-out',
+  },
+  gaps:{
+    extraLarge: '15px',
+    large: '10px',
+    medium: '',
+    small: '',
+  },
+  borrad:{
+    base: '6px',
+    minor: '',
   },
   media: {
     extraLarge: '(max-width: 1140px)',
@@ -35,8 +62,10 @@ const baseTheme = {
 export const darkTheme:DefaultTheme = {
   ...baseTheme,
   colors:{
+    ...baseTheme.colors,
     wbc: '#22272e',
     bc: '#2d333b',
+    c: '#fff',
     hover: '#ca4747',
     fill: '#fff',
   }
@@ -44,13 +73,14 @@ export const darkTheme:DefaultTheme = {
 export const lightTheme:DefaultTheme = {
   ...baseTheme,
   colors:{
+    ...baseTheme.colors,
     wbc: '#fff',
     bc: '#c7cecf',
+    c: '#000',
     hover: '#97b1ab',
     fill: '#3b3e40',
   }
 }
-
 const initialState = {
   language: 'Russian'as 'Russian'| 'English',
   current: ThemeEnum.dark
@@ -58,15 +88,15 @@ const initialState = {
 
 export type initialStateType = typeof initialState
 
-const AT = {
+export const AT = {
   LANGUAGE: 'LANGUAGE',
-  TOOGLE_THEME: 'theme/TOOGLE_THEME',
+  TOGGLE_THEME: 'theme/TOGGLE_THEME',
   ASYNC_THEME: 'theme/ASYNC_THEME',
 } as const
 
 export const themeActionCreators = {
   languageAC(){return {type: AT.LANGUAGE}},
-  toogleThemeAC(){return {type: AT.TOOGLE_THEME}},
+  toggleThemeAC(){return {type: AT.TOGGLE_THEME}},
   asyncThemeAC(){return {type: AT.ASYNC_THEME}},
 
 }
@@ -75,7 +105,7 @@ export const themeReducer = ( state = initialState, action:ActionsTypes ):initia
   switch (action.type){
     case AT.LANGUAGE:
       return {...state, language:`${state.language === 'Russian'? 'English' : 'Russian'}`}
-    case AT.TOOGLE_THEME:
+    case AT.TOGGLE_THEME:
       return {...state, current:state.current===ThemeEnum.dark? ThemeEnum.light: ThemeEnum.dark}
     default:
       return state

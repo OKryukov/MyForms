@@ -1,32 +1,35 @@
 import { FC } from "react"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { StartSVG } from "./commons/svgStorage";
 
 const HomeStyled = styled.header`
+grid-area: home;
 display: grid;
-grid-gap: var(--basic-gap);
-padding: var(--secondary-gap);
+grid-gap: ${({theme})=>theme.gaps.extraLarge};
+padding: ${({theme})=>theme.gaps.large};
+background-color: ${({theme})=>theme.colors.bc};
 text-align: right;
 cursor: pointer;
-:hover{
-  & svg{
-    fill: var(--color-pink);
-    transform: translateX(-10px);
-  }
-}
-& svg{
+svg{
   height: 30px;
   width: 30px;
-  transition: var(--transition);
+  transition: ${({theme})=>theme.trans.base};
+  fill: ${({theme})=>theme.colors.fill};
+}
+:hover{
+  svg{
+    fill: ${({theme})=>theme.colors.pink};
+    transform: translateX(-10px);
+  }
 }
 `
 export const Home:FC = ()=>{
   return(
     <HomeStyled>
-      <NavLink to="/">
+      <Link to="/">
         <StartSVG/>
-      </NavLink>
+      </Link>
     </HomeStyled>
   )
 }

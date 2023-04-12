@@ -1,59 +1,60 @@
 import { FC } from "react"
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { ProfileSVG, GitHubSVG, TelegramSVG, RusLanguageSVG, EngLanguageSVG, ThemeMoonSVG, ThemeSunSVG, } from "./commons/svgStorage";
+import { ProfileSVG, GitHubSVG, TelegramSVG, LanguageSVG, ThemeSVG} from "./commons/svgStorage";
 import { useSelector, useDispatch } from "react-redux";
-
 import { StateType } from "../BLL/store";
 import { themeActionCreators } from "../BLL/themeReducer";
-import { npmjsActionCreators } from "../BLL/npmjsReducer";
 
 const LinksStyled = styled.nav`
+grid-area: links;
 display: grid;
-grid-gap: var(--basic-gap);
-grid-template-rows: calc(150px + var(--basic-gap)*2) 1fr calc(100px + var(--basic-gap));
+grid-gap: ${({theme})=>theme.gaps.extraLarge};
+grid-template-rows: calc(150px + 30px) 1fr calc(100px + 15px);
 grid-template-areas: 'links' '.' 'settings';
+background-color: ${({theme})=>theme.colors.bc};
 
 .links{
   grid-area: links;
   display: grid;
-  grid-gap: var(--basic-gap);
+  grid-gap: ${({theme})=>theme.gaps.extraLarge};
 }
 .settings{
   grid-area: settings;
   display: grid;
-  grid-gap: var(--basic-gap);
+  grid-gap: ${({theme})=>theme.gaps.extraLarge};
 }
 .settings div{
   cursor: pointer;
 }
-& a, .settings div{
+a, .settings div{
   width: 100%;
   height: 100%;
   display: grid;
   align-items: center;
   justify-items: center;
-  border-radius: var(--border-radius);
+  border-radius: ${({theme})=>theme.borrad.base};
 }
-& a:hover, .settings div:hover{
-  background-color: var(--color-pink);
+a:hover, .settings div:hover{
+  background-color: ${({theme})=>theme.colors.hover};
 }
-& svg{
+svg{
   width: 30px;
-  fill: white;
+  height: 30px;
+  fill: ${({theme})=>theme.colors.fill};
+  transition: ${({theme})=>theme.trans.base};
 }
 `
 export const Links:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.profile.language === 'English')
-  const isDark = useSelector((state:StateType)=>state.theme.current === 'dark')
+  const language = useSelector((state:StateType)=>state.profile.language)
+  const type = useSelector((state:StateType)=>state.theme.current)
   const dispath = useDispatch()
   const themeHandler = ()=>{
-    dispath(npmjsActionCreators.asyncLoginAC())
+    dispath(themeActionCreators.asyncThemeAC())
   }
   const languageHandler = ()=>{
     dispath(themeActionCreators.languageAC())
   }
-
   return(
     <LinksStyled>
     <div className="links">
@@ -64,8 +65,8 @@ export const Links:FC = ()=>{
       <a href="https://t.me/okryukov" target="_blank" rel="noopener noreferrer"><TelegramSVG/></a>
     </div>
     <div className="settings">
-      <div onClick={themeHandler}>{isDark?<ThemeSunSVG/>:<ThemeMoonSVG/>}</div>
-      <div onClick={languageHandler}>{isEnglish?<RusLanguageSVG/>:<EngLanguageSVG/>}</div>
+      <div onClick={themeHandler}><ThemeSVG type={type}/></div>
+      <div onClick={languageHandler}><LanguageSVG language={language}/></div>
     </div>
     </LinksStyled>
   )

@@ -6,7 +6,7 @@ import { SignUpForm } from "./signUp";
 import { SignInForm } from "./signIn";
 
 const FormsStyled = styled.div`
-  
+height: 100%;
 `
 export const HabrForm:FC = ()=>{
   return(

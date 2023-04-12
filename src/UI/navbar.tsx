@@ -3,17 +3,12 @@ import styled from "styled-components";
 import { NavItem } from "./commons/navItem";
 
 const NavbarStyled = styled.nav`
-
+grid-area: navbar;
 display: grid;
 grid-auto-rows: 30px;
-padding: var(--secondary-gap);
-grid-gap: var(--secondary-gap);
-.active{
-  & div div{
-    opacity: 1;
-    right: 0;
-  }
-}
+padding: ${({theme})=>theme.gaps.large};
+grid-gap: ${({theme})=>theme.gaps.large};
+background-color: ${({theme})=>theme.colors.bc};
 `
 export const Navbar:FC = ()=>{
   return(
