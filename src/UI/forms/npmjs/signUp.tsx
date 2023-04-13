@@ -6,7 +6,7 @@ import { InputStyled } from "./input";
 
 
 const SignUpFormsStyled = styled.form<{errors:any, isValid:boolean}>`
-border-radius: var(--border-radius);
+border-radius: ${({theme})=>theme.borrad.base};
 display: grid;
 justify-content: center;
 align-content: center;
@@ -18,7 +18,7 @@ position: relative;
   display: grid;
   padding: 40px 40px 24px 40px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 20%);
-  border-radius: var(--border-radius);
+  border-radius: ${({theme})=>theme.borrad.base};
 }
 & legend{
   padding-bottom: 16px;
@@ -40,7 +40,7 @@ position: relative;
   margin: 8px 0;
   background-color: #fafafa;
   cursor: ${props=>props.isValid && "pointer"};
-  transition: var(--transition);
+  transition: ${({theme})=>theme.trans.base};
 }
 & button:hover{
   background-color: ${props=>props.isValid && "#efecec"};
@@ -53,7 +53,7 @@ position: relative;
   height: 10px;
   width: 100%;
   z-index: 2;
-  background: linear-gradient(-139deg, #fb8817, #ff4b01, #c12127, #e02aff, var(--color-pink));
+  background: ${({theme})=> `linear-gradient(-139deg, #fb8817, #ff4b01, #c12127, #e02aff,${theme.colors.pink})`};
 }
 & .inputDescription{
   font-size: 14px;

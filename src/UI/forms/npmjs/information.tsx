@@ -1,12 +1,13 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-const InformationStyled = styled.div.attrs({className:'npmjs__information'})`
-position: relative;
-transition: var(--transition);
-border-radius: var(--border-radius);
-padding: var(--secondary-gap);
+const InformationStyled = styled.div`
 height: 100%;
+position: relative;
+transition: ${({theme})=>theme.trans.base};
+border-radius: ${({theme})=>theme.borrad.base};
+padding: ${({theme})=>theme.gaps.large};
+background-color: ${({theme})=>theme.colors.bc};
 &::after{
   content: '';
   position: absolute;
@@ -15,7 +16,7 @@ height: 100%;
   height: 10px;
   width: 100%;
   z-index: 2;
-  background: linear-gradient(-139deg, #fb8817, #ff4b01, #c12127, #e02aff, var(--color-pink));
+  background: ${({theme})=> `linear-gradient(-139deg, #fb8817, #ff4b01, #c12127, #e02aff,${theme.colors.pink})`};
 }
 `
 export const Information:FC = ()=>{
