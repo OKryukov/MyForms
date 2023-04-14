@@ -74,6 +74,10 @@ position: relative;
   text-decoration:underline;
   color: black;
 }
+.signUp__error{
+  color: #cf462d;
+  font-size: 0.875rem;
+}
 `
 export const SignUpForm:FC = ()=>{
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
@@ -84,10 +88,11 @@ export const SignUpForm:FC = ()=>{
   const validParams = {
     username:{
       required:'Please enter a username',
-      pattern:{value:/[a-z]+/, message:"Name must be lowercase"}
+      pattern:{value:/([a-z]{5})+/, message:"Please enter a username"},
     },
     email:{
-      required:'Please enter a valid email'
+      required:'Please enter a valid email',
+      pattern:{value:/\S+@[a-z]+.[a-z]+/, message: 'Please enter a valid email'}
     },
     password:{
       required:'Please enter a valid password that is at least 10 characters',
@@ -109,15 +114,18 @@ export const SignUpForm:FC = ()=>{
           <label htmlFor="npmjs/up/username">Username *</label>
         </div>
         <InputStyled id="npmjs/up/username" type="text" {...register("username", validParams.username)} error={Boolean(errors?.username)}/>
+        {errors?.username && <span className="signUp__error">{errors.username?.message as string}</span>}
         <div>
           <label htmlFor="npmjs/up/email">Email address *</label>
         </div>
         <InputStyled id="npmjs/up/email" type="email" {...register("email", validParams.email)} error={Boolean(errors?.email)}/>
+        {errors?.email && <span className="signUp__error">{errors.email?.message as string}</span>}
         <span className="inputDescription">Your email address will be added to the metadata of packages that you publish, so it may be seen publicly.</span>
         <div>
           <label htmlFor="npmjs/up/password">Password *</label>
         </div>
         <InputStyled id="npmjs/up/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)} autoComplete="on"/>
+        {errors?.password && <span className="signUp__error">{errors.password?.message as string}</span>}
         <span className="inputDescription">Minimum of 10 characters and must meet our <NavLink to="https://docs.npmjs.com/creating-a-strong-password" target="_blank" className="linkPassword">password guidelines</NavLink></span>
         <button disabled={!isValid}>Create an Account</button>
       </fieldset>

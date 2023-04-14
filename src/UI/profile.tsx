@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { v1 } from 'uuid'
 import { StateType } from '../BLL/store';
+import { AgeSVG, CitySVG, CountrySVG, NameSVG, ProfessionSVG } from './commons/svgStorage';
 
 const MyProfileStyled = styled.div`
 height: 100%;
 display: grid;
-grid-template-rows: 50px 1fr;
+grid-template-rows: 50px 1fr auto;
 grid-gap: ${({theme})=>theme.gaps.extraLarge};
-grid-template-areas: 'header' 'main';
+grid-template-areas: 'header' 'main' 'footer';
 
 .profile__header{
   grid-area: header;
@@ -19,16 +20,18 @@ grid-template-areas: 'header' 'main';
 .profile__main{
   grid-area: main;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 200px 1fr 30px 110px;
+  grid-template-rows: 200px 1fr;
   grid-gap: ${({theme})=>theme.gaps.extraLarge};
-  grid-template-areas: 
-  'photo data'
-  '. .'
-  'skillTitle skillTitle'
-  'skills skills';
   background-color: ${({theme})=>theme.colors.bc};
   transition: ${({theme})=>theme.trans.base};
+}
+.profile__section_1{
+  display: grid;
+  grid-template-areas: 
+  'photo data'
+  '. .';
+  grid-template-columns: 200px 1fr;
+  grid-gap: ${({theme})=>theme.gaps.extraLarge};
 }
 & >*{
   border-radius: ${({theme})=>theme.borrad.base};
@@ -47,9 +50,36 @@ grid-template-areas: 'header' 'main';
 .profile__data{
   grid-area: data;
   color: ${({theme})=>theme.colors.c};
+  display: grid;
+  align-items: center;
+  transition: ${({theme})=>theme.trans.base};
+}
+.profile__data svg{
+  height: 20px;
+  width: 20px;
+  fill: ${({theme})=>theme.colors.fill};
+  transition: ${({theme})=>theme.trans.base};
+}
+.profile__data>*{
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-gap: ${({theme})=>theme.gaps.large};
+
+}
+
+.profile__footer{
+  grid-area:footer;
+  background-color:${({theme})=>theme.colors.bc};
+  display: grid;
+  grid-gap: ${({theme})=>theme.gaps.large};
+  grid-template-areas:
+  'skillTitle'
+  'skills';
+  transition: ${({theme})=>theme.trans.base};
 }
 .profile__skillTitle{
   grid-area: skillTitle;
+  height: 30px;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -90,22 +120,40 @@ export const MyProfile:FC = ()=>{
     <MyProfileStyled>
       <header className='profile__header'>Some text</header>
       <main className='profile__main'>
+        <section className='profile__section_1'>
         <div className='profile__photo'>
           <img src={profile.photo} alt="" />
         </div>
         <div className='profile__data'>
           <div className='name'>
-            <span>{profile.name.firstName} </span>
-            <span>{profile.name.lastName}</span>
+            <NameSVG/>
+            <span>{profile.name}</span>
           </div>
-          <div className='age'>{profile.age}</div>
-          <div className='country'>{profile.location.country}</div>
-          <div className='city'>{profile.location.city}</div>
-          <div className='profession'>{profile.profession}</div>
+          <div className='age'>
+            <AgeSVG/>
+            <span>{profile.age}</span>
+          </div>
+          <div className='country'>
+            <CountrySVG/>
+            <span>{profile.location.country}</span>
+          </div>
+          <div className='city'>
+            <CitySVG/>
+            <span>{profile.location.city}</span>
+          </div>
+          <div className='profession'>
+            <ProfessionSVG/>
+            <span>{profile.profession}</span>
+          </div>
         </div>
+        </section>
+        <section className='profile__section_2'>
+        </section>
+      </main>
+      <footer className="profile__footer">
         <div className="profile__skillTitle">{profile.skillsTitle}</div>
         <div className='profile__skills'>{skills}</div>
-      </main>
+      </footer>
     </MyProfileStyled>
   )
 }

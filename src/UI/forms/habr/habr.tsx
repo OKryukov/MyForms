@@ -22,7 +22,10 @@ export const HabrForm:FC = ()=>{
 }
 
 const InformationStyled = styled.div`
-  background-color: var(--secondary-background-color);
+  background-color: ${({theme})=>theme.colors.bc};
+  border-radius: ${({theme})=>theme.borrad.base};
+  padding: ${({theme})=>theme.gaps.large};
+  transition: ${({theme})=>theme.trans.base};
   height: 100%;
 `
 const Information:FC = ()=>{

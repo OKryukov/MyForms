@@ -6,7 +6,7 @@ const initialState = {
     rus:{
       photo: photo,
       age: 30,
-      name:{ firstName: 'Олег', lastName: 'Крюков'},
+      name:'Олег Крюков',
       location:{ country: 'Россия', city: 'Санкт - Петербург'},
       profession: 'Full Stack разработчик',
       skillsTitle: 'Список моих навыков',
@@ -14,14 +14,14 @@ const initialState = {
     eng:{
       photo: photo,
       age: 30,
-      name:{ firstName: 'Oleg', lastName: 'Kryukov'},
+      name:'Oleg Kryukov',
       location:{ country: 'Russia', city: 'Saint Petersburg'},
       profession:'Full Stack developer',
       skillsTitle: 'My skills list',
     },
   },
   skills:[
-    'HTML','JS','TS','CSS','React','Redux','Redux','Redux Thunk','React Redux','React Router DOM',
+    'HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
     'React Hook Form','ClassNames','Reselect','Styled Components','Axios','Express', 'Node JS', 'Webpack',
     'jQuery','Phyton','Git',
   ],
