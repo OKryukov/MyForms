@@ -3,12 +3,16 @@ import axios from "axios";
 const baseUrl = 'http://localhost:4000/graphql'
 const MyQuery = `
 query{
-  string
-  integer
-  float
-  boolean
-  list
-}
+  articles(id:2){
+    id
+    title
+    text
+    author{
+      name
+      id
+    }
+    }
+  }
 `
 const myAxios = axios.create({baseURL:baseUrl})
 export const getFromGraphQL = ()=>{

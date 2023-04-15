@@ -24,6 +24,7 @@ grid-template-areas: 'header' 'main' 'footer';
   grid-gap: ${({theme})=>theme.gaps.extraLarge};
   background-color: ${({theme})=>theme.colors.bc};
   transition: ${({theme})=>theme.trans.base};
+
 }
 .profile__section_1{
   display: grid;

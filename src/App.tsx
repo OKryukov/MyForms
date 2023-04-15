@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { darkTheme, lightTheme } from './BLL/themeReducer';
 
 const StyledAPP = styled.div`
+position: relative;
 height: 100vh;
 display: grid;
 grid-template-columns: 245px 1fr 50px;
@@ -21,7 +22,6 @@ grid-gap: ${({theme})=>theme.gaps.extraLarge};
 padding: ${({theme})=>theme.gaps.extraLarge+" 0 "+theme.gaps.extraLarge+" "+theme.gaps.extraLarge};
 background-color: ${({theme})=>theme.colors.wbc};
 transition: ${({theme})=>theme.trans.base};
-
 &>*{
   transition: var(--transition);
   border-radius: var(--border-radius);
