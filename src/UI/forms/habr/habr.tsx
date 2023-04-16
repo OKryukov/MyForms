@@ -8,7 +8,7 @@ import { SignInForm } from "./signIn";
 const FormsStyled = styled.div`
 height: 100%;
 `
-export const HabrForm:FC = ()=>{
+const HabrForm:FC = ()=>{
   return(
     <FormsStyled>
       <Switcher baseURL="/habr.com"/>
@@ -20,6 +20,7 @@ export const HabrForm:FC = ()=>{
     </FormsStyled>
   )
 }
+export default HabrForm
 
 const InformationStyled = styled.div`
   background-color: ${({theme})=>theme.colors.bc};

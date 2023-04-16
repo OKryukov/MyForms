@@ -11,7 +11,7 @@ height: 100%;
 display: grid;
 grid-template-rows: max-content 1fr;
 `
-export const NpmjsForm:FC = ()=>{
+const NpmjsForm:FC = ()=>{
   return(
     <FormsStyled>
       <Switcher baseURL="/npmjs.com"/>
@@ -23,3 +23,4 @@ export const NpmjsForm:FC = ()=>{
     </FormsStyled>
   )
 }
+export default NpmjsForm
