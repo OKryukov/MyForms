@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { InputStyled } from "./input";
+import { SignUpDataType, signUpTC } from "../../../BLL/npmjsReducer";
+import { useDispatch } from "react-redux";
 
 
 const SignUpFormsStyled = styled.form<{errors:any, isValid:boolean}>`
@@ -81,8 +83,8 @@ position: relative;
 `
 export const SignUpForm:FC = ()=>{
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
-  const myHandler = (data:Object)=>{
-    console.log(data)
+  const myHandler = (data:any)=>{
+    const dispatch = useDispatch()
     reset()
   }
   const validParams = {

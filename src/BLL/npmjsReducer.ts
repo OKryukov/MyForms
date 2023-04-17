@@ -1,5 +1,7 @@
 import Animalpng from'./images/npmjsAnimal.png'
 import bi from './images/bi.png'
+import { DispatchType } from './store'
+import { axiosNpmjs } from '../DAL/api'
 const initialState = {
   isAutch: false,
   animal: Animalpng,
@@ -30,5 +32,17 @@ export const npmjsReducer = (state=initialState, action:ActionsTypes):InitialSta
       return {...state, isAutch: false}
     default:
       return state
+  }
+}
+
+export type SignUpDataType = {username:String, email:String, password:String}
+export const signUpTC = (data:SignUpDataType)=>{
+  return async (dispatch:DispatchType)=>{
+    const resultCode = await axiosNpmjs.signUp(data)
+    if (resultCode === 0){
+      alert('регистрация прошла успешно')
+    }else if(resultCode === 1){
+      alert('Не удалось зарегистрироваться')
+    }
   }
 }

@@ -8,7 +8,7 @@ const initialState = {
       age: 30,
       name:'Олег Крюков',
       location:{ country: 'Россия', city: 'Санкт - Петербург'},
-      profession: 'Full Stack разработчик',
+      profession: 'FrontEnd разработчик',
       skillsTitle: 'Список моих навыков',
     },
     eng:{
@@ -16,7 +16,7 @@ const initialState = {
       age: 30,
       name:'Oleg Kryukov',
       location:{ country: 'Russia', city: 'Saint Petersburg'},
-      profession:'Full Stack developer',
+      profession:'FrontEnd developer',
       skillsTitle: 'My skills list',
     },
   },
