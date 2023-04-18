@@ -84,7 +84,6 @@ position: relative;
 export const SignUpForm:FC = ()=>{
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
   const myHandler = (data:any)=>{
-    const dispatch = useDispatch()
     reset()
   }
   const validParams = {

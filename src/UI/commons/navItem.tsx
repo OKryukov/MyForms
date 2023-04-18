@@ -50,7 +50,7 @@ export const NavItem:FC<NavItemPropsI> = (props)=>{
   const {img,title} = props
   return(
     <NavItemStyled>
-      <NavLink to={`/${title}`}>
+      <NavLink to={`/${title.toLowerCase()}`}>
         <img className="navItem__logo" src={img} alt="logo"/>
         <span className="navItem__title">{title}</span>
         <div className="navItem__lamp"></div>

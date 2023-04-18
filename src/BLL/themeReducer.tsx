@@ -81,6 +81,7 @@ export const lightTheme:DefaultTheme = {
     fill: '#3b3e40',
   }
 }
+
 const initialState = {
   language: 'Russian'as 'Russian'| 'English',
   current: ThemeEnum.dark

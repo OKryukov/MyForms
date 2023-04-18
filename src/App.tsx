@@ -23,8 +23,8 @@ padding: ${({theme})=>theme.gaps.extraLarge+" 0 "+theme.gaps.extraLarge+" "+them
 background-color: ${({theme})=>theme.colors.wbc};
 transition: ${({theme})=>theme.trans.base};
 &>*{
-  transition: var(--transition);
-  border-radius: var(--border-radius);
+  transition: ${({theme})=>theme.trans.base};
+  border-radius: ${({theme})=>theme.borrad.base};
 }
 `
 
