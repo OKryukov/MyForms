@@ -125,7 +125,7 @@ export const SignUpForm:FC = ()=>{
         <div>
           <label htmlFor="npmjs/up/password">Password *</label>
         </div>
-        <InputStyled id="npmjs/up/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)} autoComplete="on"/>
+        <InputStyled id="npmjs/up/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
         {errors?.password && <span className="signUp__error">{errors.password?.message as string}</span>}
         <span className="inputDescription">Minimum of 10 characters and must meet our <NavLink to="https://docs.npmjs.com/creating-a-strong-password" target="_blank" className="linkPassword">password guidelines</NavLink></span>
         <button disabled={!isValid}>Create an Account</button>

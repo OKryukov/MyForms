@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputStyled = styled.input<{error:boolean}>`
+export const InputStyled = styled.input.attrs(()=>({autoComplete:"off"}))<{error:boolean}>`
 width: 100%;
 height: 36px;
 margin: 8px 0;

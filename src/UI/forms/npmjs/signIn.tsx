@@ -152,7 +152,7 @@ export const SignInForm:FC = ()=>{
         <div>
           <label htmlFor="npmjs/in/password">Password</label>
         </div>
-        <InputStyled id="npmjs/in/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)} autoComplete="on"/>
+        <InputStyled id="npmjs/in/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
         {errors?.password && <span className="signIn__error">{errors.password?.message as string}</span>}
         <button disabled={!isValid}>Sign In</button>
         <NavLink className='signIn__redirect' to='/npmjs.com/signup'>Create Account</NavLink>
