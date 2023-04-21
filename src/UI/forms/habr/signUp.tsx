@@ -9,11 +9,10 @@ background-color: #f4f4f4;
 border-radius: ${({theme})=>theme.borrad.base};
 padding: ${({theme})=>theme.gaps.large};
 transition: ${({theme})=>theme.trans.base};
-display: grid;
-justify-items: center;
-align-items: center;
-overflow: scroll;
+overflow-y: scroll;
+
 .form{
+  margin: 0 auto;
   background-color: white;
   width: 460px;
   padding: 40px;
@@ -145,6 +144,11 @@ export const SignUpForm:FC = ()=>{
         <div className="form__password_repeat">
           <Input id="habr/password/repeat" isError={true} type="password" {...register('password/repeat')}/>
         </div>
+        <div className="checkbox">
+          <input id="habr/checkbox" type="checkbox" />
+          <label htmlFor="habr/checkbox">Я принимаю условия <a href=""> Пользовательского соглашения</a></label>
+        </div>
+        
         <button className="form__btn" disabled={!isValid}>Зарегистрироваться</button>
       </fieldset>
       </form>

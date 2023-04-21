@@ -20,7 +20,6 @@ background-image: url(${({bi})=>bi});
 .information{
   position: relative;
   z-index: 3;
-  padding: ${({theme})=>theme.gaps.extraLarge};
   display: grid;
   grid-template-columns: minmax(300px, 1000px);
   grid-auto-rows: auto;

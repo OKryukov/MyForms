@@ -6,14 +6,12 @@ import { ForkSVG } from "./svgStorage";
 const SwitcherStyled = styled.div<{isBaseURL:boolean}>`
 display: grid;
 grid-template-columns: 225px 30px 225px;
-grid-auto-rows: 30px;
 justify-content: center;
 grid-gap: ${({theme})=>theme.gaps.large};
 background-color: ${({theme})=>theme.colors.bc};
 transition: ${({theme})=>theme.trans.base};
 padding: ${({theme})=>theme.gaps.large};
 border-radius: ${({theme})=>theme.borrad.base};
-margin-bottom: ${({theme})=>theme.gaps.extraLarge};
 &>*{
   width: 100%;
   height: 100%;

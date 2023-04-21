@@ -7,6 +7,9 @@ import { SignInForm } from "./signIn";
 
 const FormsStyled = styled.div`
 height: 100%;
+display: grid;
+grid-template-rows: 50px 1fr;
+grid-gap: ${({theme})=>theme.gaps.extraLarge};
 `
 const HabrForm:FC = ()=>{
   return(

@@ -9,7 +9,8 @@ import { Information } from "./information";
 const FormsStyled = styled.div`
 height: 100%;
 display: grid;
-grid-template-rows: max-content 1fr;
+grid-template-rows: 50px 1fr;
+grid-gap: ${({theme})=>theme.gaps.extraLarge};
 `
 const NpmjsForm:FC = ()=>{
   return(
