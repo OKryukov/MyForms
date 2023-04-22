@@ -5,6 +5,7 @@ import { Watcher } from '../DAL/saga/saga-theme';
 import { themeReducer } from './themeReducer';
 import { profileReducer } from './profileReducer';
 import { npmjsReducer } from './npmjsReducer';
+import { habrReducer } from './habrReducer';
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   profile: profileReducer,
   theme: themeReducer,
   npmjs: npmjsReducer,
+  habr: habrReducer,
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware, sagaMiddleware))

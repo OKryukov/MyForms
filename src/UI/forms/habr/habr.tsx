@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Switcher } from "../../commons/switcher";
 import { SignUpForm } from "./signUp";
 import { SignInForm } from "./signIn";
+import { InformationContainer } from "./information/container";
 
 const FormsStyled = styled.div`
 height: 100%;
@@ -16,7 +17,7 @@ const HabrForm:FC = ()=>{
     <FormsStyled>
       <Switcher baseURL="/habr.com"/>
       <Routes>
-        <Route path="/" element={<Information/>}/>
+        <Route path="/" element={<InformationContainer/>}/>
         <Route path="/signup" element={<SignUpForm/>}/>
         <Route path="/signin" element={<SignInForm/>}/>
       </Routes>
@@ -25,17 +26,3 @@ const HabrForm:FC = ()=>{
 }
 export default HabrForm
 
-const InformationStyled = styled.div`
-  background-color: ${({theme})=>theme.colors.bc};
-  border-radius: ${({theme})=>theme.borrad.base};
-  padding: ${({theme})=>theme.gaps.large};
-  transition: ${({theme})=>theme.trans.base};
-  height: 100%;
-`
-const Information:FC = ()=>{
-  return(
-    <InformationStyled>
-      Bla bla bla
-    </InformationStyled>
-  )
-}

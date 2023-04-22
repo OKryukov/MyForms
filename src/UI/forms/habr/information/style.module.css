@@ -1,0 +1,43 @@
+.wrapper{
+  background-color: #f0f0f0;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  border-radius: 6px;
+
+}
+.header{
+  padding: 10px 10px 5px;
+  background-color: #c7cecf;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  font-size: 28px;
+  font-weight: 700;
+  color: #303b44;
+}
+.description{
+  font-size: 22px;
+  font-weight: 600;
+  color: #6091c4;
+}
+.main{
+  padding: 5px 10px 10px;
+}
+.footer{
+  padding: 10px;
+  background-color: #c7cecf;
+  text-align: center;
+}
+.more{
+  cursor: pointer;
+  height: 30px;
+  padding: 0 15px;
+  border-radius: 6px;
+  background-color: #cca1cc;
+}
+.more:hover{
+  background-color: #cd66cd;
+}
