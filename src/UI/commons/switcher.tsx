@@ -2,6 +2,8 @@ import { FC } from "react"
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { ForkSVG } from "./svgStorage";
+import { useSelector } from "react-redux";
+import { StateType } from "../../BLL/store";
 
 const SwitcherStyled = styled.div<{isBaseURL:boolean}>`
 display: grid;
@@ -68,16 +70,18 @@ export const Switcher:FC<SwitcherPropsI> = (props)=>{
   const {baseURL} = props
   const location = useLocation().pathname
   const isBaseURL = baseURL === location
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const values = useSelector((state:StateType)=>isEnglish?state.theme.values.eng:state.theme.values.rus)
   return(
     <SwitcherStyled isBaseURL={!isBaseURL}>
       <NavLink to={'signup'} onClick={event=>location === `${baseURL}/signup` && event.preventDefault()}>
-        <span className="switcher__up">Sign Up Form</span>
+        <span className="switcher__up">{values.signUp}</span>
       </NavLink>
       <NavLink to={baseURL} onClick={event=>isBaseURL && event.preventDefault()}>
         <ForkSVG/>
       </NavLink>
       <NavLink to={'signin'} onClick={event=>location === `${baseURL}/signin` && event.preventDefault()}>
-        <span className="switcher__in">Sign In Form</span>
+        <span className="switcher__in">{values.signIn}</span>
       </NavLink>
     </SwitcherStyled>
   )

@@ -1,8 +1,9 @@
-
+import logo from '../BLL/images/habr.png'
 const initialState = {
+  logo:logo,
   data:{
-    rus:'Хабр',
-    eng:'Habr',
+    rus:{name:'Хабр', description: 'Сообщество IT - специалистов',},
+    eng:{name:'Habr', description: 'Community of IT - specialists',},
   }
 }
 type InitialStateType = typeof initialState

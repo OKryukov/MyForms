@@ -84,7 +84,11 @@ export const lightTheme:DefaultTheme = {
 
 const initialState = {
   language: 'Russian'as 'Russian'| 'English',
-  current: ThemeEnum.dark
+  values:{
+    rus:{signIn: 'Форма входа', signUp: 'Форма регистрации'},
+    eng:{signIn: 'Sign In Form', signUp: 'Sign Up Form'},
+  },
+  current: ThemeEnum.dark,
 }
 
 export type initialStateType = typeof initialState
