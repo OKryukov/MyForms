@@ -83,7 +83,7 @@ export const lightTheme:DefaultTheme = {
 }
 
 const initialState = {
-  language: 'Russian'as 'Russian'| 'English',
+  language: 'English'as 'English'| 'Russian',
   values:{
     rus:{signIn: 'Форма входа', signUp: 'Форма регистрации'},
     eng:{signIn: 'Sign In Form', signUp: 'Sign Up Form'},

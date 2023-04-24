@@ -4,6 +4,8 @@ import {useForm} from 'react-hook-form'
 import { Input } from "./input";
 import { Link } from "react-router-dom";
 import { FacebookSVG, GitHubSVG, GoogleSVG, InfoSVG, LiveIDSVG, TwitterSVG, VKSVG } from "../../commons/svgStorage";
+import { useSelector } from "react-redux";
+import { StateType } from "../../../BLL/store";
 
 
 const SignInFormsStyled = styled.div`
@@ -13,18 +15,26 @@ transition: ${({theme})=>theme.trans.base};
 height: 100%;
 background-color: #f4f4f4;
 display: grid;
-align-items: center;
+grid-gap:16px;
+align-content: center;
 justify-items: center;
 .form{
   background-color: white;
   width: 460px;
   padding: 40px;
   border-radius: ${({theme})=>theme.borrad.base};
-}
-.legend{
-font-size: 22px;
-font-weight: 700;
-color: #333;
+  .legend{
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 57px;
+  }
+  .label{
+    margin-bottom: 12px;
+  }
+  input{
+    margin-bottom: 28px;
+  }
 }
 .form__btn{
   width: 100%;
@@ -34,6 +44,13 @@ color: #333;
   cursor: pointer;
   opacity: 0.5;
   font-size: 15px;
+}
+.restorePassword{
+  margin: 15px 0 28px;
+  color: #558cb7;
+}
+.services__title{
+  padding-bottom: 12px;
 }
 .services__icons{
   display: flex;
@@ -73,47 +90,80 @@ color: #333;
   height: 12px;
   fill: white;
 }
+.signUp{
+  width: 460px;
+  background-color: white;
+  border-radius: ${({theme})=>theme.borrad.base};
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a{
+    color: #558cb7;
+  }
+}
+.other{
+  width: 460px;
+  display: flex;
+  justify-content: space-between;
+  color: #8d97a0;
+  padding: 0 15px;
+  .language{
+    cursor: pointer;
+  }
+}
 `
 export const SignInForm:FC = ()=>{
   const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:'onTouched'})
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignInFormsStyled>
       <form className="form">
         <fieldset>
           <div className="legend">
-            <legend>Вход</legend>
+            <legend>{data.title}</legend>
           </div>
           <div className="label">
-            <label htmlFor="habr/email">E-mail</label>
+            <label htmlFor="habr/email">{data.email}</label>
           </div>
           <div className="form__email">
             <Input id="habr/email" isError={true} type="email" {...register('email')}/>
           </div>
           <div className="label">
-            <label htmlFor="habr/password">Пароль</label>
+            <label htmlFor="habr/password">{data.password}</label>
           </div>
           <div className="form__password">
             <Input id="habr/password" isError={true} type="password" {...register('password')}/>
           </div>
-          <button className="form__btn" disabled={!isValid}>Войти</button>
+          <button className="form__btn" disabled={!isValid}>{data.btn}</button>
           <div className="restorePassword">
-            <Link to={'/habr.com/signin'}>Забыли пароль?</Link>
+            <Link to={'/habr.com/signin'}>{data.forgot}</Link>
           </div>
           <div className="services">
-          <div className="services__title">Или войдите с помощью других сервисов</div>
-          <div className="services__icons">
-            <div className="services__Facebook"><FacebookSVG/></div>
-            <div className="services__VK"><VKSVG/></div>
-            <div className="services__Twitter"><TwitterSVG/></div>
-            <div className="services__GitHub"><GitHubSVG/></div>
-            <div className="services__LiveID"><LiveIDSVG/></div>
-            <div className="services__Google"><GoogleSVG/></div>
+            <div className="services__title">{data.services}</div>
+            <div className="services__icons">
+              <div className="services__Facebook"><FacebookSVG/></div>
+              <div className="services__VK"><VKSVG/></div>
+              <div className="services__Twitter"><TwitterSVG/></div>
+              <div className="services__GitHub"><GitHubSVG/></div>
+              <div className="services__LiveID"><LiveIDSVG/></div>
+              <div className="services__Google"><GoogleSVG/></div>
+            </div>
           </div>
-        </div>
         </fieldset>
       </form>
       <div className="signUp">
-        <span>Ещё нет аккаунта? <Link to='/habr.com/signup'>Зарегистрируйтесь</Link></span>
+        <span>{data.sigUp.question}  <Link to='/habr.com/signup'>{data.sigUp.link}</Link></span>
+      </div>
+      <div className="other">
+        <div className="language">
+          <div className="language__svg"></div>
+          <div className="language__text">{data.language}</div>
+        </div>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{data.service}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{data.feedback}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{data.agreement}</Link>
       </div>
     </SignInFormsStyled>
   )
