@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Input } from "./input";
 import { useForm } from "react-hook-form";
 import { FacebookSVG, GitHubSVG, GoogleSVG, InfoSVG, LiveIDSVG, TwitterSVG, VKSVG } from "../../commons/svgStorage";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { StateType } from "../../../BLL/store";
 
 const SignUpFormsStyled = styled.div`
 background-color: #f4f4f4;
@@ -89,9 +92,50 @@ color: #333;
   margin: 31px 0 16px;
   font-weight: 700;
 }
+.checkbox{
+  margin: 31px 0;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  grid-gap: 8px;
+  font-size: 14px;
+  a{
+    color: #558cb7;
+  }
+  input{
+    height: 18px;
+    width: 18px;
+  }
+}
+.signIn{
+  width: 460px;
+  background-color: white;
+  border-radius: ${({theme})=>theme.borrad.base};
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px auto 0;
+  a{
+    color: #558cb7;
+  }
+}
+.other{
+  margin: 16px auto;
+  width: 460px;
+  display: flex;
+  justify-content: space-between;
+  color: #8d97a0;
+  padding: 0 15px;
+  .language{
+    cursor: pointer;
+  }
+}
 `
 export const SignUpForm:FC = ()=>{
   const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:'onTouched'})
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   const formHandler = (data:any)=>{
     console.log(data)
     reset()
@@ -152,6 +196,18 @@ export const SignUpForm:FC = ()=>{
         <button className="form__btn" disabled={!isValid}>Зарегистрироваться</button>
       </fieldset>
       </form>
+      <div className="signIn">
+        <span>Уже зарегистрировались?  <Link to='/habr.com/signup'>Войдите</Link></span>
+      </div>
+      <div className="other">
+        <div className="language">
+          <div className="language__svg"></div>
+          <div className="language__text">{data.language}</div>
+        </div>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{data.service}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{data.feedback}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{data.agreement}</Link>
+      </div>
     </SignUpFormsStyled>
   )
 }

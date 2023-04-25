@@ -1,8 +1,12 @@
-Hello.\
-This is my interpretation of various forms of user input.\
-The list of forms will gradually expand.\
-
+###Привет.\
+- Этот проект ведется мной с целью его прикрепления к портфолио.\
+- На данный момент, он включает в себя реализацию нескольких форм пользовательского ввода.\
+- Структура и оформление приложения являются импровизированными и могут подвергаться изменениям.\
+- Важно, с целью разнообразия, одна и та-же задача, может быть реализована мной разными способами.\
+***
+![UI](./src/BLL/images/readme/Readme.png)
+***
 ### `npm start`
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
+***
