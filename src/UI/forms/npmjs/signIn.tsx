@@ -1,12 +1,21 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import { InputStyled } from "./input";
 import { useSelector } from "react-redux";
 import { StateType } from "../../../BLL/store";
 
-
+const rotateAnimation = keyframes`
+  0%{transform: rotate(-4deg)}
+  50%{transform: rotate(4deg)}
+  100%{transform: rotate(-4deg)}
+`
+const translateAnimation = keyframes`
+  0%{transform: translateY(0)}
+  50%{transform: translateY(-4px)}
+  100%{transform: translateY(0)}
+`
 const SignInFormsStyled = styled.form<{errors:any, isValid:boolean}>`
 border-radius: ${({theme})=>theme.borrad.base};
 display: grid;
@@ -94,12 +103,33 @@ position: relative;
   }
   .signIn__animal{
     position: absolute;
+    bottom: -10px;
     z-index: 2;
+    animation: ${translateAnimation} 1.5s ease infinite;
+    transform-origin: bottom center;
+  }
+  .signIn__animal img{
     height: 100%;
     width: 100%;
+    animation: ${rotateAnimation} 3s ease infinite;
+    transform-origin: bottom center;
+  }
+  .face{
+    position: absolute;
+    z-index: 3;
+    top: 116px;
+    right: 80px;
+    animation: ${translateAnimation} 1.5s ease infinite;
+    .mouth{
+    animation: ${rotateAnimation} 3s ease infinite;
+    width: 40px;
+    height: 20px;
+    border-radius: 55%;
+    background-color: #000;
+    
+    }
   }
 }
-
 .signIn__redirect{
   text-align: center;
   text-decoration:underline;
@@ -139,7 +169,16 @@ export const SignInForm:FC = ()=>{
       <fieldset>
         <div className="signIn__window">
           <div className="signIn__curtain"></div>
-          <img className="signIn__animal" src={animalPng} alt="animal"/>
+          <div className="signIn__animal">
+            <img src={animalPng} alt="animal"/>
+            <div className="face">
+              <div className="eyes">
+                <div className="left"></div>
+                <div className="right"></div>
+              </div>
+              <div className="mouth"></div>
+            </div>
+          </div>
         </div>
         <div>
           <legend>Sign In</legend>
@@ -152,7 +191,7 @@ export const SignInForm:FC = ()=>{
         <div>
           <label htmlFor="npmjs/in/password">Password</label>
         </div>
-        <InputStyled id="npmjs/in/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
+        <InputStyled className="password" id="npmjs/in/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
         {errors?.password && <span className="signIn__error">{errors.password?.message as string}</span>}
         <button disabled={!isValid}>Sign In</button>
         <NavLink className='signIn__redirect' to='/npmjs.com/signup'>Create Account</NavLink>
