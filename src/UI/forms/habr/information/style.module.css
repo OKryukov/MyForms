@@ -41,6 +41,25 @@
 .main{
   padding: 5px 10px 10px;
 }
+.history{
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  align-content: stretch;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 50px 0;
+}
+.history__item{
+  text-align: center;
+}
+.history__item:nth-child(2){
+  align-self: center;
+}
+.history__item:nth-child(3){
+  align-self: end;
+}
 .footer{
   padding: 10px;
   background-color: #c7cecf;
