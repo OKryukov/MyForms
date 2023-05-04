@@ -28,7 +28,7 @@ background-image: url(${({bi})=>bi});
 }
 .information__text{
 font-size: 1.5rem;
-font-weight: 700;
+font-weight: 500;
 text-align: center;
 background-color: #dce0e272;
 padding: ${({theme})=>theme.gaps.extraLarge};
