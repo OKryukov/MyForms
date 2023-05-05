@@ -1,9 +1,9 @@
 import { FC } from "react";
 import styled from "styled-components";
-import {useForm} from 'react-hook-form'
+import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import { Input } from "./input";
 import { Link } from "react-router-dom";
-import { FacebookSVG, GitHubSVG, GoogleSVG, InfoSVG, LiveIDSVG, TwitterSVG, VKSVG } from "../../commons/svgStorage";
+import { FacebookSVG, GitHubSVG, GoogleSVG, LiveIDSVG, TwitterSVG, VKSVG } from "../../commons/svgStorage";
 import { useSelector } from "react-redux";
 import { StateType } from "../../../BLL/store";
 
@@ -114,12 +114,25 @@ justify-items: center;
 }
 `
 export const SignInForm:FC = ()=>{
-  const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:'onTouched'})
+  const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:"onBlur"})
+  const formHandler:SubmitHandler<FieldValues> = (event)=>{
+    console.log(event)
+    reset()
+  }
+  const validParams = {
+    email:{
+      required:'Необходимо заполнить поле',
+      pattern:{value:/\S+@[a-z]+.[a-z]+/, message: 'Введите корректный e-mail'}
+    },
+    password:{
+      required:'Введите пароль',
+    },
+  }
   const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignInFormsStyled>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit(formHandler)}>
         <fieldset>
           <div className="legend">
             <legend>{data.title}</legend>
@@ -128,13 +141,13 @@ export const SignInForm:FC = ()=>{
             <label htmlFor="habr/email">{data.email}</label>
           </div>
           <div className="form__email">
-            <Input id="habr/email" isError={true} type="email" {...register('email')}/>
+            <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
           </div>
           <div className="label">
             <label htmlFor="habr/password">{data.password}</label>
           </div>
           <div className="form__password">
-            <Input id="habr/password" isError={true} type="password" {...register('password')}/>
+            <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
           </div>
           <button className="form__btn" disabled={!isValid}>{data.btn}</button>
           <div className="restorePassword">

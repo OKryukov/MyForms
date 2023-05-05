@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { InputStyled } from "./input";
@@ -83,7 +83,8 @@ position: relative;
 `
 export const SignUpForm:FC = ()=>{
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
-  const myHandler = (data:any)=>{
+  const formHandler:SubmitHandler<FieldValues> = (event)=>{
+    console.log(event)
     reset()
   }
   const validParams = {
@@ -101,7 +102,7 @@ export const SignUpForm:FC = ()=>{
     }
   }
   return(
-    <SignUpFormsStyled onSubmit={handleSubmit(myHandler)} errors={errors} isValid={isValid}>
+    <SignUpFormsStyled onSubmit={handleSubmit(formHandler)} errors={errors} isValid={isValid}>
       <a href="https://www.npmjs.com/" target="_blank" style={{marginBottom:"40px", textAlign:"center"}}>
         <svg viewBox="0 0 780 250" width="144px" height="46px">
           <path fill="#231F20" d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z M0,200h100V50h50v150h50V0H0V200z"></path>

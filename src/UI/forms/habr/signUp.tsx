@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { Input } from "./input";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FacebookSVG, GitHubSVG, GoogleSVG, InfoSVG, LiveIDSVG, TwitterSVG, VKSVG } from "../../commons/svgStorage";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -134,12 +134,26 @@ color: #333;
 `
 export const SignUpForm:FC = ()=>{
   const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:'onTouched'})
-  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
-  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
-  const formHandler = (data:any)=>{
-    console.log(data)
+  const formHandler:SubmitHandler<FieldValues> = (event)=>{
+    console.log(event)
     reset()
   }
+  const validParams = {
+    email:{
+      required:'Необходимо заполнить поле',
+      pattern:{value:/\S+@[a-z]+.[a-z]+/, message: 'Введите корректный e-mail'}
+    },
+    nickname:{
+      required:'Необходимо заполнить поле',
+      minLength:{value:3, message:'Не менее 3-х символов'}
+    },
+    password:{
+      required:'Введите пароль',
+      minLength:{value:5, message:'Не менее 5-ти символов'}
+    },
+  }
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignUpFormsStyled>
       <form className="form" onSubmit={handleSubmit(formHandler)}>
@@ -168,19 +182,19 @@ export const SignUpForm:FC = ()=>{
           <label htmlFor="habr/email">E-mail</label>
         </div>
         <div className="form__email">
-          <Input id="habr/email" isError={true} type="email" {...register('email')}/>
+          <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
         </div>
         <div className="label">
           <label htmlFor="habr/nickname">Никнейм</label>
         </div>
         <div className="form__nickname">
-          <Input id="habr/nickname" isError={true} type="text" {...register('nickname')}/>
+          <Input id="habr/nickname" isError={true} type="text" {...register('nickname', validParams.nickname)}/>
         </div>
         <div className="label">
           <label htmlFor="habr/password">Пароль</label>
         </div>
         <div className="form__password">
-          <Input id="habr/password" isError={true} type="password" {...register('password')}/>
+          <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
         </div>
         <div className="label">
           <label htmlFor="habr/password/repeat">Пароль ещё раз</label>
