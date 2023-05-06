@@ -131,6 +131,10 @@ color: #333;
     cursor: pointer;
   }
 }
+.form__error{
+  font-size: 12px;
+  color: #de5959;
+}
 `
 export const SignUpForm:FC = ()=>{
   const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:'onTouched'})
@@ -151,6 +155,10 @@ export const SignUpForm:FC = ()=>{
       required:'Введите пароль',
       minLength:{value:5, message:'Не менее 5-ти символов'}
     },
+    repeatPassword:{
+      required:'Введите пароль',
+      minLength:{value:5, message:'Не менее 5-ти символов'}
+    }
   }
   const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
@@ -183,24 +191,28 @@ export const SignUpForm:FC = ()=>{
         </div>
         <div className="form__email">
           <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
+          {errors?.email && <span className="form__error">{errors.email?.message as string}</span>}
         </div>
         <div className="label">
           <label htmlFor="habr/nickname">Никнейм</label>
         </div>
         <div className="form__nickname">
           <Input id="habr/nickname" isError={true} type="text" {...register('nickname', validParams.nickname)}/>
+          {errors?.nickname && <span className="form__error">{errors.nickname?.message as string}</span>}
         </div>
         <div className="label">
           <label htmlFor="habr/password">Пароль</label>
         </div>
         <div className="form__password">
           <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
+          {errors?.password && <span className="form__error">{errors.password?.message as string}</span>}
         </div>
         <div className="label">
           <label htmlFor="habr/password/repeat">Пароль ещё раз</label>
         </div>
         <div className="form__password_repeat">
-          <Input id="habr/password/repeat" isError={true} type="password" {...register('password/repeat')}/>
+          <Input id="habr/password/repeat" isError={true} type="password" {...register('repeatPassword')}/>
+          {errors?.repeatPassword && <span className="form__error">{errors.repeatPassword?.message as string}</span>}
         </div>
         <div className="checkbox">
           <input id="habr/checkbox" type="checkbox" />

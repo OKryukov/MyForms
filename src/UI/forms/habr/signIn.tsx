@@ -112,6 +112,10 @@ justify-items: center;
     cursor: pointer;
   }
 }
+.form__error{
+  font-size: 12px;
+  color: #de5959;
+}
 `
 export const SignInForm:FC = ()=>{
   const {register, formState:{errors, isValid}, handleSubmit, reset} = useForm({mode:"onBlur"})
@@ -142,12 +146,14 @@ export const SignInForm:FC = ()=>{
           </div>
           <div className="form__email">
             <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
+            {errors?.email && <span className="form__error">{errors.email?.message as string}</span>}
           </div>
           <div className="label">
             <label htmlFor="habr/password">{data.password}</label>
           </div>
           <div className="form__password">
             <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
+            {errors?.password && <span className="form__error">{errors.password?.message as string}</span>}
           </div>
           <button className="form__btn" disabled={!isValid}>{data.btn}</button>
           <div className="restorePassword">
