@@ -22,8 +22,8 @@ const initialState = {
   },
   skills:[
     'HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
-    'React Hook Form','ClassNames','Reselect','Styled Components','Axios','Express', 'Node JS', 'Webpack',
-    'jQuery','Phyton','Git',
+    'React Hook Form','ClassNames','Reselect','Styled Components','Axios','Express', 'GraphQL','Node JS','Webpack',
+    'jQuery','Phyton','Git','MongoDB'
   ],
 }
 export type InitialStateType = typeof initialState

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { v1 } from 'uuid'
 import { StateType } from '../BLL/store';
 import { AgeSVG, CitySVG, CountrySVG, NameSVG, ProfessionSVG } from './commons/svgStorage';
+import { Skills } from './skills';
 
 const MyProfileStyled = styled.div`
 height: 100%;
@@ -89,33 +90,11 @@ grid-template-areas: 'header' 'main' 'footer';
   font-weight: 800;
   transition: ${({theme})=>theme.trans.base};
 }
-.profile__skills{
-  grid-area: skills;
-  display: grid;
-  grid-template-rows: repeat(3 , 30px);
-  grid-template-columns: repeat(7, 1fr);
-  grid-column-gap: ${({theme})=>theme.gaps.extraLarge};
-  grid-row-gap: ${({theme})=>theme.gaps.large};
-}
-.profile__skill{
-  align-items: center;
-  justify-items: center;
-  display: grid;
-  background-color: ${({theme})=>theme.colors.lightGray};
-  border-radius: ${({theme})=>theme.borrad.base};
-  cursor: pointer;
-}
-.profile__skill:hover{
-  background-color: ${({theme})=>theme.colors.pink};
-  font-size: 1.2em;
-}
 `
 
 export const MyProfile:FC = ()=>{
-  const data = useSelector((state:StateType)=> state.profile)
-  const isEnglish = data.language === 'English'
+  const isEnglish = useSelector((state:StateType)=> state.profile.language) === 'English'
   const profile = useSelector((state:StateType)=>isEnglish? state.profile.data.eng : state.profile.data.rus)
-  const skills = data.skills.map(skill=><div className='profile__skill' key={v1()}><span>{skill}</span></div>)
   console.log("Перерисовка компоненты");
   return(
     <MyProfileStyled>
@@ -153,7 +132,7 @@ export const MyProfile:FC = ()=>{
       </main>
       <footer className="profile__footer">
         <div className="profile__skillTitle">{profile.skillsTitle}</div>
-        <div className='profile__skills'>{skills}</div>
+        <Skills/>
       </footer>
     </MyProfileStyled>
   )
