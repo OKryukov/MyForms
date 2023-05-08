@@ -25,6 +25,12 @@ const initialState = {
     'React Hook Form','ClassNames','Reselect','Styled Components','Axios','Express', 'GraphQL','Node JS','Webpack',
     'jQuery','Phyton','Git','MongoDB'
   ],
+  skillsNew:{
+    frontend:['HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
+    'React Hook Form','ClassNames','Reselect','Styled Components','Axios'],
+    backend:['Node JS','Express','GraphQL','MongoDB'],
+    other:['Webpack','Phyton','jQuery','Git'],
+  }
 }
 export type InitialStateType = typeof initialState
 
