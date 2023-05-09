@@ -20,12 +20,7 @@ const initialState = {
       skillsTitle: 'My skills list',
     },
   },
-  skills:[
-    'HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
-    'React Hook Form','ClassNames','Reselect','Styled Components','Axios','Express', 'GraphQL','Node JS','Webpack',
-    'jQuery','Phyton','Git','MongoDB'
-  ],
-  skillsNew:{
+  skills:{
     frontend:['HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
     'React Hook Form','ClassNames','Reselect','Styled Components','Axios'],
     backend:['Node JS','Express','GraphQL','MongoDB'],
