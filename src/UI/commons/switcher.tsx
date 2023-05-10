@@ -23,7 +23,7 @@ border-radius: ${({theme})=>theme.borrad.base};
   background-color: ${({theme})=>theme.colors.lightGray};
   border-radius: ${({theme})=>theme.borrad.base};
 }
-.active{
+.active span{
   font-weight: 800;
 }
 svg{

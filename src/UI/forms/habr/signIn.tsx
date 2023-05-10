@@ -23,18 +23,19 @@ justify-items: center;
   width: 460px;
   padding: 40px;
   border-radius: ${({theme})=>theme.borrad.base};
-  .legend{
+  legend{
     font-size: 22px;
     font-weight: 700;
     color: #333;
     margin-bottom: 57px;
   }
   .label{
+    display: block;
     margin-bottom: 12px;
   }
-  input{
-    margin-bottom: 28px;
-  }
+}
+.form__password{
+  margin-top: 28px;
 }
 .form__btn{
   width: 100%;
@@ -44,6 +45,7 @@ justify-items: center;
   cursor: pointer;
   opacity: 0.5;
   font-size: 15px;
+  margin-top: 28px;
 }
 .restorePassword{
   margin: 15px 0 28px;
@@ -141,17 +143,13 @@ export const SignInForm:FC = ()=>{
           <div className="legend">
             <legend>{data.title}</legend>
           </div>
-          <div className="label">
-            <label htmlFor="habr/email">{data.email}</label>
-          </div>
           <div className="form__email">
+            <label className="label" htmlFor="habr/email">{data.email}</label>
             <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
             {errors?.email && <span className="form__error">{errors.email?.message as string}</span>}
           </div>
-          <div className="label">
-            <label htmlFor="habr/password">{data.password}</label>
-          </div>
           <div className="form__password">
+            <label className="label" htmlFor="habr/password">{data.password}</label>
             <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
             {errors?.password && <span className="form__error">{errors.password?.message as string}</span>}
           </div>

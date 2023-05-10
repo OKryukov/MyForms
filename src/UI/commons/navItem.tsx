@@ -13,6 +13,9 @@ a{
   position: relative;
   cursor: pointer;
 }
+.active span{
+  font-weight: 700;
+}
 .active .navItem__lamp{
   opacity: 1;
   right: 0;
