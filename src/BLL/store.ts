@@ -6,6 +6,7 @@ import { themeReducer } from './themeReducer';
 import { profileReducer } from './profileReducer';
 import { npmjsReducer } from './npmjsReducer';
 import { habrReducer } from './habrReducer';
+import { gitlabReducer } from './gitlabReducer';
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   theme: themeReducer,
   npmjs: npmjsReducer,
   habr: habrReducer,
+  gitlab: gitlabReducer
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware, sagaMiddleware))

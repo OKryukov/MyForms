@@ -10,6 +10,7 @@ export const SignIn:FC = ()=>{
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
   const formHandler:SubmitHandler<FieldValues> = (event)=>{
     console.log(event)
+    reset()
   }
   return(
     <SignInStyled onSubmit={handleSubmit(formHandler)}>
@@ -18,16 +19,16 @@ export const SignIn:FC = ()=>{
         <div>GitLab.com</div>
       </div>
       <div className="email">
-        <label htmlFor="gitlab/email">Username or email</label>
-        <input type='email' {...register('email')} id='gitlab/email'/>
+        <label htmlFor="gitlab/sigmin/email">Username or email</label>
+        <input type='email' {...register('email')} id='gitlab/sigmin/email'/>
       </div>
       <div className="password">
-        <label htmlFor="">Password</label>
-        <input type='password' {...register('password')} id='gitlab/password'/>
+        <label htmlFor="gitlab/sigmin/password">Password</label>
+        <input type='password' {...register('password')} id='gitlab/sigmin/password'/>
       </div>
       <div className="remember">
-        <input type="checkbox" {...register('checkbox-one')} id="gitlab/checkbox-one"/>
-        <label htmlFor="gitlab/checkbox-one">Remember me</label>
+        <input type="checkbox" {...register('checkbox-one')} id="gitlab/sigmin/checkbox-one"/>
+        <label htmlFor="gitlab/sigmin/checkbox-one">Remember me</label>
         <Link to='/gitlab.com/signin'>Forgot your password</Link>
       </div>
       <button>Sgign in</button>
@@ -42,8 +43,8 @@ export const SignIn:FC = ()=>{
       </div>
       <Services/>
       <div className="remember_services">
-        <input type="checkbox" {...register('checkbox-two')} id="gitlab/checkbox-two"/>
-        <label htmlFor="gitlab/checkbox-two">Remember me</label>
+        <input type="checkbox" {...register('checkbox-two')} id="gitlab/sigmin/checkbox-two"/>
+        <label htmlFor="gitlab/sigmin/checkbox-two">Remember me</label>
       </div>
     </SignInStyled>
   )
