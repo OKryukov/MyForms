@@ -6,7 +6,10 @@ import { Information } from './information'
 import { SignIn } from './signIn'
 import { SignUp } from './signUp'
 const GitlabStyled = styled.div`
-  
+display: grid;
+grid-template-rows: 50px 1fr;
+grid-gap: ${({theme})=>theme.gaps.extraLarge};
+height: 100%;
 `
 const Gitlab:FC = ()=>{
   return(
