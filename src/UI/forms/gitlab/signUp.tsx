@@ -3,6 +3,8 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Services } from './services'
+import { InputStyled } from './input'
+import { Logo } from './logo'
 const SignUpStyled = styled.form`
   
 `
@@ -13,32 +15,29 @@ export const SignUp:FC = ()=>{
   }
   return (
     <SignUpStyled onSubmit={handleSubmit(formHandler)}>
-      <div className="logo">
-        <img src="#" alt="logo" />
-        <div>GitLab.com</div>
-      </div>
+      <Logo/>
       <div className="name">
         <div className="firstName">
           <label htmlFor="gitlab/signup/firstName">First name</label>
-          <input type="text" id='gitlab/signup/firstName'/>
+          <InputStyled type="text" id='gitlab/signup/firstName'/>
         </div>
         <div className="lastName">
           <label htmlFor="gitlab/signup/lastName">Last name</label>
-          <input type="text" id='gitlab/signup/lastName'/>
+          <InputStyled type="text" id='gitlab/signup/lastName'/>
         </div>
       </div>
       <div className="username">
         <label htmlFor="gitlab/signup/username">Username</label>
-        <input type="text" id='gitlab/signup/username'/>
+        <InputStyled type="text" id='gitlab/signup/username'/>
       </div>
       <div className="email">
         <label htmlFor="gitlab/signup/email">Email</label>
-        <input type='email' id='gitlab/signup/email'/>
+        <InputStyled type='email' id='gitlab/signup/email'/>
         <div className="error">We recommend a work email address.</div>
       </div>
       <div className="password">
-        <label htmlFor="gitlab/signup/password">Email</label>
-        <input type='password' id='gitlab/signup/password'/>
+        <label htmlFor="gitlab/signup/password">Password</label>
+        <InputStyled type='password' id='gitlab/signup/password'/>
         <div className="error">We recommend a work email address.</div>
       </div>
       <button>Register</button>

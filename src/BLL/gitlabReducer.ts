@@ -1,4 +1,6 @@
+import logo from '../BLL/images/gitlab.svg'
 const initialState = {
+  logo: logo,
   data:{
     rus:{},
     eng:{}

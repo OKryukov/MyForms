@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Services } from './services'
 import { InputStyled } from './input'
+import { Logo } from './logo'
 const SignInStyled = styled.div`
 
 background-color: white;
@@ -43,10 +44,7 @@ export const SignIn:FC = ()=>{
   return (
     <SignInStyled>
       <form onSubmit={handleSubmit(formHandler)}>
-        <div className="logo">
-          <img src="#" alt="logo" />
-          <div>GitLab.com</div>
-        </div>
+        <Logo/>
         <fieldset>
           <div className="email">
             <label htmlFor="gitlab/sigmin/email">Username or email</label>
