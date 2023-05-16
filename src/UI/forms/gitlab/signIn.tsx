@@ -6,11 +6,11 @@ import { Services } from './services'
 import { InputStyled } from './input'
 import { Logo } from './logo'
 const SignInStyled = styled.div`
-
 background-color: white;
 display: grid;
 align-content: center;
 justify-items: center;
+border-radius: ${({theme})=>theme.borrad.base};
 form{
   width: 465px;
   padding: 0 16px;
