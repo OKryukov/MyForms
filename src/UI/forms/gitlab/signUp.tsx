@@ -35,6 +35,24 @@ form{
   grid-gap: 10px;
   
 }
+.register__title{
+  margin-bottom: 8px;
+  font-size: 16px;
+  text-align: center;
+  color: #333238
+}
+.signin{
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  color: #333238;
+  a{
+    color: #558cb7;
+    :hover{
+      text-decoration: underline;
+    }
+  }
+}
 `
 export const SignUp:FC = ()=>{
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
@@ -92,7 +110,7 @@ export const SignUp:FC = ()=>{
           <div className='register__title'>Register with:</div>
           <Services />
         </div>
-        <div className="signin">Already have an account?<Link to={'/gitlab.com/signin'}> Sign in</Link></div>
+        <span className="signin">Already have an account?<Link to={'/gitlab.com/signin'}>Sign in</Link></span>
       </form>
     </SignUpStyled>
   )

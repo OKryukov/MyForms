@@ -1,6 +1,12 @@
 import logo from '../BLL/images/gitlab.svg'
+import google from '../BLL/images/gitlab/cervices/google.png'
+import github from '../BLL/images/gitlab/cervices/github.png'
+import twitter from '../BLL/images/gitlab/cervices/twitter.png'
+import bitbucket from '../BLL/images/gitlab/cervices/bitbucket.png'
+import salesforce from '../BLL/images/gitlab/cervices/salesforce.png'
 const initialState = {
   logo: logo,
+  services:{google,github,twitter,bitbucket,salesforce},
   data:{
     rus:{},
     eng:{}
