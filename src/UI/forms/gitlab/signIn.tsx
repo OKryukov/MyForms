@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Services } from './services'
 import { InputStyled } from './input'
 import { Logo } from './logo'
+import { Button } from './button'
 const SignInStyled = styled.div`
 background-color: white;
 display: grid;
@@ -59,7 +60,7 @@ export const SignIn:FC = ()=>{
             <label htmlFor="gitlab/sigmin/checkbox-one">Remember me</label>
             <Link to='/gitlab.com/signin'>Forgot your password</Link>
           </div>
-          <button>Sgign in</button>
+          <Button>Sgign in</Button>
           <div className="policy">By signing in you accept the
             <Link to='/gitlab.com/signin'> Terms of Use and acknowledge the Privacy Policy and Cookie Policy.</Link>
           </div>

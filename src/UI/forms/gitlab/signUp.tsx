@@ -5,14 +5,14 @@ import styled from 'styled-components'
 import { Services } from './services'
 import { InputStyled } from './input'
 import { Logo } from './logo'
+import { Button } from './button'
 const SignUpStyled = styled.div`
 border-radius: ${({theme})=>theme.borrad.base};
 background-color: #fff;
-display: grid;
-align-content: center;
-justify-items: center;
+overflow-y: scroll;
 form{
-  max-width: 441px;
+  width: 441px;
+  margin: 0 auto;
   label{
     font-size: 14px;
     font-weight: 600;
@@ -63,6 +63,9 @@ export const SignUp:FC = ()=>{
     lastName:{
       required:'This field is required.',
     },
+    userName: {
+      required: 'Please create a username with only alphanumeric characters.',
+    },
     email:{
       required:'Please provide a valid email address.',
       pattern:{value:/\S+@[a-z]+.[a-z]+/, message: 'This email address does not look right, are you sure you typed it correctly?'}
@@ -87,12 +90,14 @@ export const SignUp:FC = ()=>{
           </div>
           <div className="lastName">
             <label htmlFor="gitlab/signup/lastName">Last name</label>
-            <InputStyled type="text" id='gitlab/signup/lastName' />
+            <InputStyled type="text" id='gitlab/signup/lastName' {...register('gitlab/signup/lastName', validParams.lastName)}/>
+            {errors['gitlab/signup/lastName'] && <div className="error">{errors['gitlab/signup/lastName']?.message as string}</div>}
           </div>
         </div>
         <div className="username">
           <label htmlFor="gitlab/signup/username">Username</label>
-          <InputStyled type="text" id='gitlab/signup/username' />
+          <InputStyled type="text" id='gitlab/signup/username' {...register('gitlab/signup/username', validParams.userName)}/>
+          {errors['gitlab/signup/username'] && <div className="error">{errors['gitlab/signup/username']?.message as string}</div>}
         </div>
         <div className="email">
           <label htmlFor="gitlab/signup/email">Email</label>
@@ -104,7 +109,7 @@ export const SignUp:FC = ()=>{
           <InputStyled type='password' id='gitlab/signup/password' {...register('gitlab/signup/password', validParams.password)}/>
           <div className="error">{errors['gitlab/signup/password']?errors['gitlab/signup/password']?.message as string:'Minimum length is 8 characters.'}</div>
         </div>
-        <button>Register</button>
+        <Button>Register</Button>
         <div className="policy">By clicking Register or registering through a third party you accept the GitLab<Link to={'/gitlab.com/signup'}> Terms of Use and acknowledge the Privacy Policy and Cookie Policy</Link></div>
         <div className="register">
           <div className='register__title'>Register with:</div>
