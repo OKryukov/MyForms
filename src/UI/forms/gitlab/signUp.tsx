@@ -16,7 +16,6 @@ form{
   label{
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 2px;
     line-height: 1;
     display: inline-grid;
     margin-bottom: 2px;
@@ -42,10 +41,21 @@ form{
   color: #333238
 }
 .signin{
-  display: flex;
-  justify-content: center;
-  padding-top: 16px;
+  padding: 16px 0;
   color: #333238;
+  text-align: center;
+  a{
+    color: #558cb7;
+    :hover{
+      text-decoration: underline;
+    }
+  }
+}
+.policy{
+  margin-top: 16px;
+  font-size: 14px;
+  color: #333238;
+  line-height: 1.5;
   a{
     color: #558cb7;
     :hover{
@@ -110,12 +120,12 @@ export const SignUp:FC = ()=>{
           <div className="error">{errors['gitlab/signup/password']?errors['gitlab/signup/password']?.message as string:'Minimum length is 8 characters.'}</div>
         </div>
         <Button>Register</Button>
-        <div className="policy">By clicking Register or registering through a third party you accept the GitLab<Link to={'/gitlab.com/signup'}> Terms of Use and acknowledge the Privacy Policy and Cookie Policy</Link></div>
+        <div className="policy">By clicking Register or registering through a third party you accept the GitLab <Link to={'/gitlab.com/signup'}>Terms of Use and acknowledge the Privacy Policy and Cookie Policy</Link></div>
         <div className="register">
           <div className='register__title'>Register with:</div>
           <Services />
         </div>
-        <span className="signin">Already have an account?<Link to={'/gitlab.com/signin'}>Sign in</Link></span>
+        <div className="signin">Already have an account? <Link to={'/gitlab.com/signin'}>Sign in</Link></div>
       </form>
     </SignUpStyled>
   )

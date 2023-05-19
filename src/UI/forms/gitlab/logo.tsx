@@ -6,6 +6,7 @@ import { StateType } from '../../../BLL/store'
 const LogoStyled = styled.div`
 display: grid;
 justify-items: center;
+margin-top: 65px;
 img{
   width: 56px;
 }

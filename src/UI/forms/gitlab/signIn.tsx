@@ -15,6 +15,16 @@ border-radius: ${({theme})=>theme.borrad.base};
 form{
   width: 465px;
   padding: 0 16px;
+  fieldset>div{
+    margin-bottom: 16px;
+  }
+  label{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-grid;
+    margin-bottom: 2px;
+  }
 }
 .password, .email{
   label{
@@ -24,8 +34,13 @@ form{
   }
 }
 [class*=remember]{
+  display: flex;
+  align-items: center;
   label, input{
     cursor: pointer;
+  }
+  label{
+    margin-left: 8px;
   }
 }
 a{
@@ -34,7 +49,19 @@ a{
     text-decoration: underline;
   }
 }
-
+.remember{
+  display: flex;
+  justify-content: space-between;
+}
+.policy, .register{
+  margin-top: 16px;
+  font-size: 14px;
+  color: #333238;
+  line-height: 1.5;
+}
+.register{
+  text-align: center;
+}
 `
 export const SignIn:FC = ()=>{
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
@@ -56,17 +83,15 @@ export const SignIn:FC = ()=>{
             <InputStyled type='password' {...register('password')} id='gitlab/sigmin/password'/>
           </div>
           <div className="remember">
-            <input type="checkbox" {...register('checkbox-one')} id="gitlab/sigmin/checkbox-one" />
-            <label htmlFor="gitlab/sigmin/checkbox-one">Remember me</label>
+            <div>
+              <input type="checkbox" {...register('checkbox-one')} id="gitlab/sigmin/checkbox-one" />
+              <label htmlFor="gitlab/sigmin/checkbox-one">Remember me</label>
+            </div>
             <Link to='/gitlab.com/signin'>Forgot your password</Link>
           </div>
           <Button>Sgign in</Button>
-          <div className="policy">By signing in you accept the
-            <Link to='/gitlab.com/signin'> Terms of Use and acknowledge the Privacy Policy and Cookie Policy.</Link>
-          </div>
-          <div className="register">Don't have an account yet?
-            <Link to='/gitlab.com/signin'> Register now</Link>
-          </div>
+          <div className="policy">By signing in you accept the <Link to='/gitlab.com/signin'>Terms of Use and acknowledge the Privacy Policy and Cookie Policy.</Link></div>
+          <div className="register">Don't have an account yet? <Link to='/gitlab.com/signin'>Register now</Link></div>
           <div className="or">
             <span>or</span>
           </div>
