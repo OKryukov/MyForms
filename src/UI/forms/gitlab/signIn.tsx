@@ -6,6 +6,8 @@ import { Services } from './services'
 import { InputStyled } from './input'
 import { Logo } from './logo'
 import { Button } from './button'
+import { useSelector } from 'react-redux'
+import { StateType } from '../../../BLL/store'
 const SignInStyled = styled.div`
 background-color: white;
 display: grid;
@@ -69,13 +71,14 @@ export const SignIn:FC = ()=>{
     console.log(event)
     reset()
   }
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   return (
     <SignInStyled>
       <form onSubmit={handleSubmit(formHandler)}>
         <Logo/>
         <fieldset>
           <div className="email">
-            <label htmlFor="gitlab/sigmin/email">Username or email</label>
+            <label htmlFor="gitlab/sigmin/email">{isEnglish?'Username or email':'Имя пользователя или адрес электронной почты'}</label>
             <InputStyled type='email' {...register('email')} id='gitlab/sigmin/email'/>
           </div>
           <div className="password">

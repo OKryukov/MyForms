@@ -1,5 +1,7 @@
 import { FC } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { StateType } from '../../../BLL/store'
 const InformationStyled = styled.div`
 .causes{
   width: 100%;
@@ -25,7 +27,7 @@ const InformationStyled = styled.div`
   display: grid;
   grid-template-columns: 20px 520px;
   grid-template-rows: 40px 80px;
-  grid-template-areas: 'number title' 'number description';
+  grid-template-areas: 'number title' 'description description';
   grid-gap: 16px;
   background-color: #f6f3fe;
   padding: 20px;
@@ -49,24 +51,31 @@ const InformationStyled = styled.div`
 }
 `
 export const Information:FC = ()=>{
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   return(
     <InformationStyled>
       <div className="causes">
-        <div className="question">Three reasons why Developers choose GitLab</div>
+        <div className="question">{isEnglish?'Three reasons why Developers choose GitLab':'Три причины, по которым разработчики выбирают GitLab'}</div>
         <div className='cause cause_one'>
           <div className="number">1</div>
-          <div className="title">Single application</div>
-          <div className="description">GitLab brings all DevSecOps capabilities into one application with a unified data store so everything is all in one place.</div>
+          <div className="title">{isEnglish?'Single application':'Одно приложение'}</div>
+          <div className="description">{isEnglish?
+          'GitLab brings all DevSecOps capabilities into one application with a unified data store so everything is all in one place.':
+          'GitLab объединяет все возможности DevSecOps в одном приложении с унифицированным хранилищем данных, чтобы все было в одном месте.'}</div>
         </div>
         <div className='cause cause_two'>
           <div className="number">2</div>
-          <div className="title">Enhanced productivity</div>
-          <div className="description">GitLab’s single application delivers a superior user experience, which improves cycle time and helps prevent context switching.</div>
+          <div className="title">{isEnglish?'Enhanced productivity':'Повышенная производительность'}</div>
+          <div className="description">{isEnglish?
+          'GitLab’s single application delivers a superior user experience, which improves cycle time and helps prevent context switching.':
+          'Одно приложение GitLab предоставляет превосходный пользовательский интерфейс, что сокращает время переключения контекста.'}</div>
         </div>
         <div className='cause cause_three'>
           <div className="number">3</div>
-          <div className="title">Better automation, where it really counts</div>
-          <div className="description">GitLab’s automation tools are more reliable and feature rich, helping remove cognitive load and unnecessary grunt work.</div>
+          <div className="title">{isEnglish?'Better automation, where it really counts':'Лучшая автоматизация где надо'}</div>
+          <div className="description">{isEnglish?
+          'GitLab’s automation tools are more reliable and feature rich, helping remove cognitive load and unnecessary grunt work.':
+          'Инструменты автоматизации GitLab более надежны и многофункциональны, помогая снять когнитивную нагрузку и ненужную рутинную работу.'}</div>
         </div>
       </div>
     </InformationStyled>
