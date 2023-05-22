@@ -82,26 +82,26 @@ export const SignIn:FC = ()=>{
             <InputStyled type='email' {...register('email')} id='gitlab/sigmin/email'/>
           </div>
           <div className="password">
-            <label htmlFor="gitlab/sigmin/password">Password</label>
+            <label htmlFor="gitlab/sigmin/password">{isEnglish?'Password':'Пароль'}</label>
             <InputStyled type='password' {...register('password')} id='gitlab/sigmin/password'/>
           </div>
           <div className="remember">
             <div>
               <input type="checkbox" {...register('checkbox-one')} id="gitlab/sigmin/checkbox-one" />
-              <label htmlFor="gitlab/sigmin/checkbox-one">Remember me</label>
+              <label htmlFor="gitlab/sigmin/checkbox-one">{isEnglish?'Remember me':'Запомнить меня'}</label>
             </div>
-            <Link to='/gitlab.com/signin'>Forgot your password</Link>
+            <Link to='/gitlab.com/signin'>{isEnglish?'Forgot your password':'Забыли пароль'}</Link>
           </div>
-          <Button>Sgign in</Button>
-          <div className="policy">By signing in you accept the <Link to='/gitlab.com/signin'>Terms of Use and acknowledge the Privacy Policy and Cookie Policy.</Link></div>
-          <div className="register">Don't have an account yet? <Link to='/gitlab.com/signin'>Register now</Link></div>
+          <Button>{isEnglish?'Sgign in':'Войти'}</Button>
+          <div className="policy">{isEnglish?'By signing in you accept the ':'Выполняя вход, вы принимаете '}<Link to='/gitlab.com/signin'>{isEnglish?'Terms of Use and acknowledge the Privacy Policy and Cookie Policy.':'Условия использования и соглашаетесь с Политикой конфиденциальности и Политикой в отношении файлов cookie.'}</Link></div>
+          <div className="register">{isEnglish?'Don\'t have an account yet? ':'У вас еще нет аккаунта? '}<Link to='/gitlab.com/signin'>{isEnglish?'Register now':'Зарегистрироваться'}</Link></div>
           <div className="or">
-            <span>or</span>
+            <span>{isEnglish?'or':'или'}</span>
           </div>
           <Services />
           <div className="remember_services">
             <input type="checkbox" {...register('checkbox-two')} id="gitlab/sigmin/checkbox-two" />
-            <label htmlFor="gitlab/sigmin/checkbox-two">Remember me</label>
+            <label htmlFor="gitlab/sigmin/checkbox-two">{isEnglish?'Remember me':'Запомнить меня'}</label>
           </div>
         </fieldset>
       </form>

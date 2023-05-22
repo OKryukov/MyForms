@@ -27,7 +27,7 @@ const InformationStyled = styled.div`
   display: grid;
   grid-template-columns: 20px 520px;
   grid-template-rows: 40px 80px;
-  grid-template-areas: 'number title' 'description description';
+  grid-template-areas: 'number title' 'number description';
   grid-gap: 16px;
   background-color: #f6f3fe;
   padding: 20px;

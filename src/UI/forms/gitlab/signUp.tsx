@@ -6,6 +6,8 @@ import { Services } from './services'
 import { InputStyled } from './input'
 import { Logo } from './logo'
 import { Button } from './button'
+import { useSelector } from 'react-redux'
+import { StateType } from '../../../BLL/store'
 const SignUpStyled = styled.div`
 border-radius: ${({theme})=>theme.borrad.base};
 background-color: #fff;
@@ -65,10 +67,11 @@ form{
 }
 `
 export const SignUp:FC = ()=>{
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
   const validParams = {
     firstName:{
-      required:'This field is required.',
+      required: 'This field is required.',
     },
     lastName:{
       required:'This field is required.',
@@ -94,38 +97,38 @@ export const SignUp:FC = ()=>{
       <form onSubmit={handleSubmit(formHandler)}>
         <div className="name">
           <div className="firstName">
-            <label htmlFor="gitlab/signup/firstName">First name</label>
+            <label htmlFor="gitlab/signup/firstName">{isEnglish?'First name':'Имя'}</label>
             <InputStyled type="text" id='gitlab/signup/firstName' {...register('gitlab/signup/firstName', validParams.firstName)}/>
             {errors['gitlab/signup/firstName'] && <div className="error">{errors['gitlab/signup/firstName']?.message as string}</div>}
           </div>
           <div className="lastName">
-            <label htmlFor="gitlab/signup/lastName">Last name</label>
+            <label htmlFor="gitlab/signup/lastName">{isEnglish?'Last name':'Фамилия'}</label>
             <InputStyled type="text" id='gitlab/signup/lastName' {...register('gitlab/signup/lastName', validParams.lastName)}/>
             {errors['gitlab/signup/lastName'] && <div className="error">{errors['gitlab/signup/lastName']?.message as string}</div>}
           </div>
         </div>
         <div className="username">
-          <label htmlFor="gitlab/signup/username">Username</label>
+          <label htmlFor="gitlab/signup/username">{isEnglish?'Username':'Имя пользователя'}</label>
           <InputStyled type="text" id='gitlab/signup/username' {...register('gitlab/signup/username', validParams.userName)}/>
           {errors['gitlab/signup/username'] && <div className="error">{errors['gitlab/signup/username']?.message as string}</div>}
         </div>
         <div className="email">
-          <label htmlFor="gitlab/signup/email">Email</label>
+          <label htmlFor="gitlab/signup/email">{isEnglish?'Email':'Электронная почта'}</label>
           <InputStyled type='email' id='gitlab/signup/email' {...register('gitlab/signup/email', validParams.email)}/>
           <div className="error">{errors['gitlab/signup/email']?errors['gitlab/signup/email']?.message as string:"We recommend a work email address."}</div>
         </div>
         <div className="password">
-          <label htmlFor="gitlab/signup/password">Password</label>
+          <label htmlFor="gitlab/signup/password">{isEnglish?'Password':'Пароль'}</label>
           <InputStyled type='password' id='gitlab/signup/password' {...register('gitlab/signup/password', validParams.password)}/>
           <div className="error">{errors['gitlab/signup/password']?errors['gitlab/signup/password']?.message as string:'Minimum length is 8 characters.'}</div>
         </div>
-        <Button>Register</Button>
-        <div className="policy">By clicking Register or registering through a third party you accept the GitLab <Link to={'/gitlab.com/signup'}>Terms of Use and acknowledge the Privacy Policy and Cookie Policy</Link></div>
+        <Button>{isEnglish?'Register':'Зарегистрироваться'}</Button>
+        <div className="policy">{isEnglish?'By clicking Register or registering through a third party you accept the GitLab ':'Нажимая «Зарегистрироваться» или регистрируясь через третье лицо, вы принимаете GitLab '}<Link to={'/gitlab.com/signup'}>{isEnglish?'Terms of Use and acknowledge the Privacy Policy and Cookie Policy':'Условия использования и примите Политику конфиденциальности и Политику использования файлов cookie.'}</Link></div>
         <div className="register">
-          <div className='register__title'>Register with:</div>
+          <div className='register__title'>{isEnglish?'Register with:':'Зарегистрироваться:'}</div>
           <Services />
         </div>
-        <div className="signin">Already have an account? <Link to={'/gitlab.com/signin'}>Sign in</Link></div>
+        <div className="signin">{isEnglish?'Already have an account? ':'У вас уже есть аккаунт? '}<Link to={'/gitlab.com/signin'}>{isEnglish?'Sign in':'Войти'}</Link></div>
       </form>
     </SignUpStyled>
   )
