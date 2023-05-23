@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { StateType } from '../../../BLL/store'
 const InformationStyled = styled.div`
+overflow-y: auto;
+padding: 20px;
 .causes{
   width: 100%;
   display: flex;
@@ -12,16 +14,25 @@ const InformationStyled = styled.div`
   .cause_two{align-self: center;}
   .cause_three{align-self: flex-end;}
 }
-.question{
+.question, .more{
   font-size: 32px;
   font-weight: 600;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   background-color: #d5cdeb;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.more {
+  width: 50%;
+  margin: 0 auto;
+}
+.more a:hover{
+  font-weight: 600;
+  background-color: #d5cdeb;
+  color: #7759c2;
 }
 .cause{
   display: grid;
@@ -77,6 +88,7 @@ export const Information:FC = ()=>{
           'GitLab’s automation tools are more reliable and feature rich, helping remove cognitive load and unnecessary grunt work.':
           'Инструменты автоматизации GitLab более надежны и многофункциональны, помогая снять когнитивную нагрузку и ненужную рутинную работу.'}</div>
         </div>
+        <button className='more'><a href="https://about.gitlab.com/" target="blank">{isEnglish?'Go to the website and find out more':'Перейти на сайт и узнать подробнее'}</a></button>
       </div>
     </InformationStyled>
   )
