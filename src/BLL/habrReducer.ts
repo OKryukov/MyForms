@@ -4,11 +4,7 @@ const initialState = {
   data:{
     rus:{
       name:'Хабр',
-      title: 'Вход',
-      email: 'E-mail',
-      password: 'Пароль',
       btn: 'Войти',
-      forgot: 'Забыли пароль?',
       services: 'Или войдите с помощью других сервисов',
       sigUp:{
         question: 'Ещё нет аккаунта?',
@@ -27,11 +23,7 @@ const initialState = {
     },
     eng:{
       name:'Habr',
-      title: 'Log in',
-      email: 'Email',
-      password: 'Password',
       btn: 'Log in',
-      forgot: 'Forgot password?',
       services: 'Or log in with',
       sigUp:{
         question: 'Have no account yet?',

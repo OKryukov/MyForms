@@ -29,10 +29,12 @@ padding: 20px;
   width: 50%;
   margin: 0 auto;
 }
-.more a:hover{
-  font-weight: 600;
+.more:hover{
   background-color: #d5cdeb;
   color: #7759c2;
+  a{
+    font-weight: 600;
+  }
 }
 .cause{
   display: grid;

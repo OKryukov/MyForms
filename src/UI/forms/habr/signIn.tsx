@@ -141,21 +141,21 @@ export const SignInForm:FC = ()=>{
       <form className="form" onSubmit={handleSubmit(formHandler)}>
         <fieldset>
           <div className="legend">
-            <legend>{data.title}</legend>
+            <legend>{isEnglish?'Log in':'Вход'}</legend>
           </div>
           <div className="form__email">
-            <label className="label" htmlFor="habr/email">{data.email}</label>
+            <label className="label" htmlFor="habr/email">{isEnglish?'Email':'E-mail'}</label>
             <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
             {errors?.email && <span className="form__error">{errors.email?.message as string}</span>}
           </div>
           <div className="form__password">
-            <label className="label" htmlFor="habr/password">{data.password}</label>
+            <label className="label" htmlFor="habr/password">{isEnglish?'Password':'Пароль'}</label>
             <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
             {errors?.password && <span className="form__error">{errors.password?.message as string}</span>}
           </div>
-          <button className="form__btn" disabled={!isValid}>{data.btn}</button>
+          <button className="form__btn" disabled={!isValid}>{isEnglish?'Log in':'Войти'}</button>
           <div className="restorePassword">
-            <Link to={'/habr.com/signin'}>{data.forgot}</Link>
+            <Link to={'/habr.com/signin'}>{isEnglish?'Forgot password?':'Забыли пароль?'}</Link>
           </div>
           <div className="services">
             <div className="services__title">{data.services}</div>

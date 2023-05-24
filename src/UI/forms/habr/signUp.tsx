@@ -160,23 +160,24 @@ export const SignUpForm:FC = ()=>{
       minLength:{value:5, message:'Не менее 5-ти символов'}
     }
   }
-  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignUpFormsStyled>
       <form className="form" onSubmit={handleSubmit(formHandler)}>
       <fieldset className="fieldset">
         <div className="legend">
-          <legend>Регистрация</legend>
+          <legend>{isEnglish?'Registration':'Регистрация'}</legend>
         </div>
         <div className="information">
           <div className="information__icon">
             <InfoSVG/>
           </div>
-          <div className="information__text">Зарегистрируйте Хабр Аккаунт, чтобы вступить в крупнейшее русскоязычное IT-сообщество, учиться и делиться опытом, всегда быть в курсе того, что происходит в IT.</div>
+          <div className="information__text">{isEnglish?'Sign up on Habr Account to join millions of people in Habr tech community, learn and share experience, and always stay on top of modern trends and latest achievements of technology and science.':
+          'Зарегистрируйте Хабр Аккаунт, чтобы вступить в крупнейшее русскоязычное IT-сообщество, учиться и делиться опытом, всегда быть в курсе того, что происходит в IT.'}</div>
         </div>
         <div className="services">
-          <div className="services__title">C помощью сервиса</div>
+          <div className="services__title">{isEnglish?'Or sign up with':'C помощью сервиса'}</div>
           <div className="services__icons">
             <div className="services__Facebook"><FacebookSVG/></div>
             <div className="services__VK"><VKSVG/></div>
@@ -187,28 +188,28 @@ export const SignUpForm:FC = ()=>{
           </div>
         </div>
         <div className="label">
-          <label htmlFor="habr/email">E-mail</label>
+          <label htmlFor="habr/email">{isEnglish?'Email':'E-mail'}</label>
         </div>
         <div className="form__email">
           <Input id="habr/email" isError={true} type="email" {...register('email', validParams.email)}/>
           {errors?.email && <span className="form__error">{errors.email?.message as string}</span>}
         </div>
         <div className="label">
-          <label htmlFor="habr/nickname">Никнейм</label>
+          <label htmlFor="habr/nickname">{isEnglish?'Username':'Никнейм'}</label>
         </div>
         <div className="form__nickname">
           <Input id="habr/nickname" isError={true} type="text" {...register('nickname', validParams.nickname)}/>
           {errors?.nickname && <span className="form__error">{errors.nickname?.message as string}</span>}
         </div>
         <div className="label">
-          <label htmlFor="habr/password">Пароль</label>
+          <label htmlFor="habr/password">{isEnglish?'Password':'Пароль'}</label>
         </div>
         <div className="form__password">
           <Input id="habr/password" isError={true} type="password" {...register('password', validParams.password)}/>
           {errors?.password && <span className="form__error">{errors.password?.message as string}</span>}
         </div>
         <div className="label">
-          <label htmlFor="habr/password/repeat">Пароль ещё раз</label>
+          <label htmlFor="habr/password/repeat">{isEnglish?'Repeat password':'Пароль ещё раз'}</label>
         </div>
         <div className="form__password_repeat">
           <Input id="habr/password/repeat" isError={true} type="password" {...register('repeatPassword')}/>
@@ -216,14 +217,14 @@ export const SignUpForm:FC = ()=>{
         </div>
         <div className="checkbox">
           <input id="habr/checkbox" type="checkbox" />
-          <label htmlFor="habr/checkbox">Я принимаю условия <a href=""> Пользовательского соглашения</a></label>
+          <label htmlFor="habr/checkbox">{isEnglish?'I accept the ':'Я принимаю условия '}<a href="">{isEnglish?'User agreement':'Пользовательского соглашения'}</a></label>
         </div>
         
-        <button className="form__btn" disabled={!isValid}>Зарегистрироваться</button>
+        <button className="form__btn" disabled={!isValid}>{isEnglish?'Sign Up':'Зарегистрироваться'}</button>
       </fieldset>
       </form>
       <div className="signIn">
-        <span>Уже зарегистрировались?  <Link to='/habr.com/signup'>Войдите</Link></span>
+        <span>{isEnglish?'Already registered?':'Уже зарегистрировались?'}<Link to='/habr.com/signup'>{isEnglish?' Log in':' Войдите'}</Link></span>
       </div>
       <div className="other">
         <div className="language">
