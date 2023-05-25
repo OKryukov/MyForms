@@ -161,7 +161,6 @@ export const SignUpForm:FC = ()=>{
     }
   }
   const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
-  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignUpFormsStyled>
       <form className="form" onSubmit={handleSubmit(formHandler)}>
@@ -229,11 +228,11 @@ export const SignUpForm:FC = ()=>{
       <div className="other">
         <div className="language">
           <div className="language__svg"></div>
-          <div className="language__text">{data.language}</div>
+          <div className="language__text">{isEnglish?'Русский':'English'}</div>
         </div>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{data.service}</Link>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{data.feedback}</Link>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{data.agreement}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{isEnglish?'About':'О сервисе'}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{isEnglish?'Feedback':'Обратная связь'}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{isEnglish?'User agreement':'Соглашение'}</Link>
       </div>
     </SignUpFormsStyled>
   )

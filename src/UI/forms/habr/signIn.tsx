@@ -135,7 +135,6 @@ export const SignInForm:FC = ()=>{
     },
   }
   const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
-  const data = useSelector((state:StateType)=>isEnglish?state.habr.data.eng:state.habr.data.rus)
   return(
     <SignInFormsStyled>
       <form className="form" onSubmit={handleSubmit(formHandler)}>
@@ -158,7 +157,7 @@ export const SignInForm:FC = ()=>{
             <Link to={'/habr.com/signin'}>{isEnglish?'Forgot password?':'Забыли пароль?'}</Link>
           </div>
           <div className="services">
-            <div className="services__title">{data.services}</div>
+            <div className="services__title">{isEnglish?'Or log in with':'Или войдите с помощью других сервисов'}</div>
             <div className="services__icons">
               <div className="services__Facebook"><FacebookSVG/></div>
               <div className="services__VK"><VKSVG/></div>
@@ -171,16 +170,16 @@ export const SignInForm:FC = ()=>{
         </fieldset>
       </form>
       <div className="signUp">
-        <span>{data.sigUp.question}  <Link to='/habr.com/signup'>{data.sigUp.link}</Link></span>
+        <span>{isEnglish?'Have no account yet? ':'Ещё нет аккаунта? '}<Link to='/habr.com/signup'>{isEnglish?'Sign up':'Зарегистрируйтесь'}</Link></span>
       </div>
       <div className="other">
         <div className="language">
           <div className="language__svg"></div>
-          <div className="language__text">{data.language}</div>
+          <div className="language__text">{isEnglish?'Русский':'English'}</div>
         </div>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{data.service}</Link>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{data.feedback}</Link>
-        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{data.agreement}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="service">{isEnglish?'About':'О сервисе'}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="feedback">{isEnglish?'Feedback':'Обратная связь'}</Link>
+        <Link to={'http://localhost:3000/habr.com/signin'} className="agreement">{isEnglish?'User agreement':'Соглашение'}</Link>
       </div>
     </SignInFormsStyled>
   )
