@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { InputStyled } from "./input";
 import { SignUpDataType, signUpTC } from "../../../BLL/npmjsReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { StateType } from "../../../BLL/store";
 
 
 const SignUpFormsStyled = styled.form<{errors:any, isValid:boolean}>`
@@ -82,6 +83,7 @@ position: relative;
 }
 `
 export const SignUpForm:FC = ()=>{
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
   const formHandler:SubmitHandler<FieldValues> = (event)=>{
     console.log(event)
@@ -110,29 +112,30 @@ export const SignUpForm:FC = ()=>{
       </a>
       <fieldset>
         <div>
-          <legend>Sign Up</legend>
+          <legend>{isEnglish?'Sign Up':'Зарегистрироваться'}</legend>
         </div>
         <div>
-          <label htmlFor="npmjs/up/username">Username *</label>
+          <label htmlFor="npmjs/up/username">{isEnglish?'Username *':'Имя пользователя *'}</label>
         </div>
         <InputStyled id="npmjs/up/username" type="text" {...register("username", validParams.username)} error={Boolean(errors?.username)}/>
         {errors?.username && <span className="signUp__error">{errors.username?.message as string}</span>}
         <div>
-          <label htmlFor="npmjs/up/email">Email address *</label>
+          <label htmlFor="npmjs/up/email">{isEnglish?'Email address *':'Адрес электронной почты *'}</label>
         </div>
         <InputStyled id="npmjs/up/email" type="email" {...register("email", validParams.email)} error={Boolean(errors?.email)}/>
         {errors?.email && <span className="signUp__error">{errors.email?.message as string}</span>}
-        <span className="inputDescription">Your email address will be added to the metadata of packages that you publish, so it may be seen publicly.</span>
+        <span className="inputDescription">{isEnglish?'Your email address will be added to the metadata of packages that you publish, so it may be seen publicly.':
+          'Ваш адрес электронной почты будет добавлен в метаданные пакетов, которые вы публикуете, чтобы его можно было увидеть публично.'}</span>
         <div>
-          <label htmlFor="npmjs/up/password">Password *</label>
+          <label htmlFor="npmjs/up/password">{isEnglish?'Password *':'Пароль *'}</label>
         </div>
         <InputStyled id="npmjs/up/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
         {errors?.password && <span className="signUp__error">{errors.password?.message as string}</span>}
-        <span className="inputDescription">Minimum of 10 characters and must meet our <NavLink to="https://docs.npmjs.com/creating-a-strong-password" target="_blank" className="linkPassword">password guidelines</NavLink></span>
-        <button disabled={!isValid}>Create an Account</button>
+        <span className="inputDescription">{isEnglish?'Minimum of 10 characters and must meet our ':'Минимум 10 символов и должны соответствовать нашим '}<NavLink to="https://docs.npmjs.com/creating-a-strong-password" target="_blank" className="linkPassword">{isEnglish?'password guidelines':'требованиям к паролю'}</NavLink></span>
+        <button disabled={!isValid}>{isEnglish?'Create an Account':'Завести аккаунт'}</button>
       </fieldset>
-      <span>Already have an account?</span>
-      <NavLink to="/npmjs.com/signin" className="linkSigin">Sign in</NavLink>
+      <span>{isEnglish?'Already have an account?':'У вас уже есть аккаунт?'}</span>
+      <NavLink to="/npmjs.com/signin" className="linkSigin">{isEnglish?'Sign in':'Войти'}</NavLink>
     </SignUpFormsStyled>
   )
 }

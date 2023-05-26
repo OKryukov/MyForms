@@ -143,6 +143,7 @@ position: relative;
 }
 `
 export const SignInForm:FC = ()=>{
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
   const formHandler:SubmitHandler<FieldValues> = (event)=>{
     console.log(event)
@@ -181,20 +182,20 @@ export const SignInForm:FC = ()=>{
           </div>
         </div>
         <div>
-          <legend>Sign In</legend>
+          <legend>{isEnglish?'Sign In':'Войти'}</legend>
         </div>
         <div>
-          <label htmlFor="npmjs/in/username">Username</label>
+          <label htmlFor="npmjs/in/username">{isEnglish?'Username':'Имя пользователя'}</label>
         </div>
         <InputStyled id="npmjs/in/username" type="text" {...register("username", validParams.username)} error={Boolean(errors?.username)}/>
         {errors?.username && <span className="signIn__error">{errors.username?.message as string}</span>}
         <div>
-          <label htmlFor="npmjs/in/password">Password</label>
+          <label htmlFor="npmjs/in/password">{isEnglish?'Password':'Пароль'}</label>
         </div>
         <InputStyled className="password" id="npmjs/in/password" type="password" {...register("password", validParams.password)} error={Boolean(errors?.password)}/>
         {errors?.password && <span className="signIn__error">{errors.password?.message as string}</span>}
-        <button disabled={!isValid}>Sign In</button>
-        <NavLink className='signIn__redirect' to='/npmjs.com/signup'>Create Account</NavLink>
+        <button disabled={!isValid}>{isEnglish?'Sign In':'Войти'}</button>
+        <NavLink className='signIn__redirect' to='/npmjs.com/signup'>{isEnglish?'Create Account':'Зарегистрироваться'}</NavLink>
       </fieldset>
     </SignInFormsStyled>
   )

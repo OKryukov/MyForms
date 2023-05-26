@@ -8,17 +8,17 @@ export const Information:FC = (props:any)=>{
   return(
     <div className={cn(m.wrapper)}>
       <div className={cn(m.header)}>
-        <div className={cn(m.name)}>{data.name}</div>
-        <div className={cn(m.description)}>{data.description}</div>
+        <div className={cn(m.name)}>{isEnglish?'Habr':'Хабр'}</div>
+        <div className={cn(m.description)}>{isEnglish?'Community of IT - specialists':'Сообщество IT - специалистов'}</div>
       </div>
       <div className={cn(m.main)}>
         <div className={cn(m.logo)}>
           <img src={logo}/>
         </div>
         <div className={cn(m.history)}>
-          <p className={cn(m.history__item)}>{data.information.history}</p>
-          <p className={cn(m.history__item)}>{data.information.date}</p>
-          <p className={cn(m.history__item)}>{data.information.rating}</p>
+          <p className={cn(m.history__item)}>{data.history}</p>
+          <p className={cn(m.history__item)}>{data.date}</p>
+          <p className={cn(m.history__item)}>{data.rating}</p>
         </div>
       </div>
       <div className={cn(m.footer)}>
