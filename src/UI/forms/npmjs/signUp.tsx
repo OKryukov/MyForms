@@ -3,8 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { InputStyled } from "./input";
-import { SignUpDataType, signUpTC } from "../../../BLL/npmjsReducer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { StateType } from "../../../BLL/store";
 
 

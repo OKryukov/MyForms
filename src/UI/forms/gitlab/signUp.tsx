@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -71,26 +71,28 @@ export const SignUp:FC = ()=>{
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
   const validParams = {
     firstName:{
-      required: 'This field is required.',
+      required: isEnglish?'This field is required.':'Это поле обязательно к заполнению.',
     },
     lastName:{
-      required:'This field is required.',
+      required: isEnglish?'This field is required.':'Это поле обязательно к заполнению.',
     },
     userName: {
-      required: 'Please create a username with only alphanumeric characters.',
+      required: isEnglish?'Please create a username with only alphanumeric characters.':'Пожалуйста, создайте имя пользователя, состоящее только из букв или-цифровых символов.',
     },
     email:{
-      required:'Please provide a valid email address.',
-      pattern:{value:/\S+@[a-z]+.[a-z]+/, message: 'This email address does not look right, are you sure you typed it correctly?'}
+      required: isEnglish?'Please provide a valid email address.':'Пожалуйста, представьте действующий адрес электронной почты.',
+      pattern:{value:/\S+@[a-z]+.[a-z]+/, message: isEnglish?'This email address does not look right, are you sure you typed it correctly?':'Этот адрес выглядит некорректно. Вы уверены, что ввели его правильно?'}
     },
     password:{
-      required:'Minimum length is 8 characters.',
-      minLength: {value: 8, message:'Minimum length is 8 characters.'}
+      required: isEnglish?'Minimum length is 8 characters.':'Минимальная длина 8 символов.',
+      minLength: {value: 8, message: isEnglish?'Minimum length is 8 characters.':'Минимальная длина 8 символов.'}
     },
   }
   const formHandler:SubmitHandler<FieldValues> = (event)=>{
     console.log(event)
+    reset()
   }
+  useEffect(()=>reset(),[isEnglish])
   return (
     <SignUpStyled>
       <Logo />
@@ -115,12 +117,12 @@ export const SignUp:FC = ()=>{
         <div className="email">
           <label htmlFor="gitlab/signup/email">{isEnglish?'Email':'Электронная почта'}</label>
           <InputStyled type='email' id='gitlab/signup/email' {...register('gitlab/signup/email', validParams.email)}/>
-          <div className="error">{errors['gitlab/signup/email']?errors['gitlab/signup/email']?.message as string:"We recommend a work email address."}</div>
+          <div className="error">{errors['gitlab/signup/email']?errors['gitlab/signup/email']?.message as string:isEnglish?"We recommend a work email address.":'Мы рекомендуем рабочий адрес электронной почты.'}</div>
         </div>
         <div className="password">
           <label htmlFor="gitlab/signup/password">{isEnglish?'Password':'Пароль'}</label>
           <InputStyled type='password' id='gitlab/signup/password' {...register('gitlab/signup/password', validParams.password)}/>
-          <div className="error">{errors['gitlab/signup/password']?errors['gitlab/signup/password']?.message as string:'Minimum length is 8 characters.'}</div>
+          <div className="error">{errors['gitlab/signup/password']?errors['gitlab/signup/password']?.message as string:isEnglish?'Minimum length is 8 characters.':'Минимальная длина 8 символов.'}</div>
         </div>
         <Button>{isEnglish?'Register':'Зарегистрироваться'}</Button>
         <div className="policy">{isEnglish?'By clicking Register or registering through a third party you accept the GitLab ':'Нажимая «Зарегистрироваться» или регистрируясь через третье лицо, вы принимаете GitLab '}<Link to={'/gitlab.com/signup'}>{isEnglish?'Terms of Use and acknowledge the Privacy Policy and Cookie Policy':'Условия использования и примите Политику конфиденциальности и Политику использования файлов cookie.'}</Link></div>
