@@ -1,38 +1,23 @@
 import { FC } from "react"
 import styled from "styled-components";
-import { CountrySVG } from "./commons/svgStorage";
-import { NavLink } from "react-router-dom";
+import { NavItem } from "./commons/navItem";
+import { useSelector } from "react-redux";
+import { StateType } from "../BLL/store";
 
 const FooterStyled = styled.footer`
 grid-area: footer;
 display: grid;
-grid-template-columns: repeat(4, 50px);
-grid-gap: ${({theme})=>theme.gaps.extraLarge};
+grid-auto-rows: 30px;
+padding: ${({theme})=>theme.gaps.large};
+grid-gap: ${({theme})=>theme.gaps.large};
 background-color: ${({theme})=>theme.colors.bc};
-border-radius: ${({theme})=>theme.borrad.base};
-color: ${({theme})=>theme.colors.wbc};
-svg{
-  width: 30px;
-  height: 30px;
-  fill: ${({theme})=>theme.colors.fill};
-  transition: ${({theme})=>theme.trans.base};
-}
-a{
-  width: 100%;
-  height: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  border-radius: ${({theme})=>theme.borrad.base};
-}
->a:hover{
-  background-color: ${({theme})=>theme.colors.hover};
-}
 `
 export const Footer:FC = ()=>{
+  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
   return(
     <FooterStyled>
-      <NavLink to=''><CountrySVG/></NavLink>
+      <div className="title">{isEnglish?'Menu':'Меню'}</div>
+      <NavItem title="GitLab.com" img="https://gitlab.com/assets/logo-911de323fa0def29aaf817fca33916653fc92f3ff31647ac41d2c39bbe243edb.svg"/>
     </FooterStyled>
   )
 }
