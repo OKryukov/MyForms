@@ -18,9 +18,9 @@ export const Main:FC = ()=>{
   return(
     <MainStyled>
       <Routes>
-        <Route path="/npmjs.com/*" element={<LazyNpmjsForm/>}/>
-        <Route path="/habr.com/*" element={<LazyHabrForm/>}/>
-        <Route path="/gitlab.com/*" element={<LazyGitlabForm/>}/>
+        <Route path="/npmjs/forms/*" element={<LazyNpmjsForm/>}/>
+        <Route path="/habr/forms/*" element={<LazyHabrForm/>}/>
+        <Route path="/gitlab/forms/*" element={<LazyGitlabForm/>}/>
         <Route path="/myprofile" element={<MyProfile/>}/>
       </Routes>
     </MainStyled>

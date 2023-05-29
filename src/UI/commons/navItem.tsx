@@ -48,12 +48,13 @@ a{
 interface NavItemPropsI {
   img:string;
   title:string;
+  to:string;
 }
 export const NavItem:FC<NavItemPropsI> = (props)=>{
-  const {img,title} = props
+  const {img,title,to} = props
   return(
     <NavItemStyled>
-      <NavLink to={`/${title.toLowerCase()}`}>
+      <NavLink to={`/${to.toLowerCase()}`}>
         <img className="navItem__logo" src={img} alt="logo"/>
         <span className="navItem__title">{title}</span>
         <div className="navItem__lamp"></div>
