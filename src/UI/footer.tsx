@@ -28,6 +28,7 @@ export const Footer:FC = ()=>{
     <FooterStyled>
       <div className="title">{isEnglish?'Menu':'Меню'}</div>
       <NavItem to={"gitLab/menu"} title="GitLab" img="https://gitlab.com/assets/logo-911de323fa0def29aaf817fca33916653fc92f3ff31647ac41d2c39bbe243edb.svg"/>
+      <NavItem to={"habr/menu"} title="Habr" img="https://habr.com/img/maskable_icon.png"/>
     </FooterStyled>
   )
 }
