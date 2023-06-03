@@ -160,7 +160,7 @@ export const SignUpForm:FC = ()=>{
       minLength:{value:5, message:'Не менее 5-ти символов'}
     }
   }
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return(
     <SignUpFormsStyled>
       <form className="form" onSubmit={handleSubmit(formHandler)}>

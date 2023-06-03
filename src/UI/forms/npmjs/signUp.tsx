@@ -82,7 +82,7 @@ position: relative;
 }
 `
 export const SignUpForm:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   const {handleSubmit, reset, formState:{errors, isValid}, register} = useForm({mode:"onBlur"})
   const formHandler:SubmitHandler<FieldValues> = (event)=>{
     console.log(event)

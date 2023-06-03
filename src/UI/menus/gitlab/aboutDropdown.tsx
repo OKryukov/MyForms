@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
 import { StateType } from '../../../BLL/store';
@@ -29,16 +29,33 @@ svg{
   fill: #d1d1f0;
   width: 20px;
   }
+.display_none{
+  display: none;
+}
+.svg{
+  display: flex;
+  align-items: center;
+}
+.rotate{
+  transform: rotate(180deg);
+}
 `
 const AboutDropdown:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
+  const [isSelected, setIsSelected] = useState(false)
+  const aboutClickHandler = ()=>{
+    console.log('Click')
+    setIsSelected(isSelected?false:true)
+  }
   return(
     <AboutDropdownStyled>
-      <button className='dropdown__current'>
+      <button className='dropdown__current' onClick={aboutClickHandler}>
         <span>About GitLab</span>
-        <DropdownSVG/>
+        <div className={isSelected?'svg rotate':'svg'}>
+          <DropdownSVG/>
+        </div>
       </button>
-      <ul className='dropdown__list'>
+      <ul className={isSelected?'dropdown__list':'dropdown__list display_none'}>
         <li className='dropdown__item'>GitLab: the DevOps platform</li>
         <li className='dropdown__item'>Explore GitLab</li>
         <li className='dropdown__item'>Install GitLab</li>

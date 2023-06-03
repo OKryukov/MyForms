@@ -64,7 +64,7 @@ padding: 20px;
 }
 `
 export const Information:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return(
     <InformationStyled>
       <div className="causes">

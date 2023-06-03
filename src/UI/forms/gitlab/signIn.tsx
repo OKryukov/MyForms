@@ -71,7 +71,7 @@ export const SignIn:FC = ()=>{
     console.log(event)
     reset()
   }
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return (
     <SignInStyled>
       <form onSubmit={handleSubmit(formHandler)}>

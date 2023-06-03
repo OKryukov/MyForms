@@ -8,7 +8,7 @@ const GitlabMenuStyled = styled.div`
 background-color: #292961;
 `
 const GitlabMenu:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return(
     <GitlabMenuStyled>
       <header className='gitlabMenu__header'>

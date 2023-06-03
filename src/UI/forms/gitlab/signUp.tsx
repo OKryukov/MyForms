@@ -67,7 +67,7 @@ form{
 }
 `
 export const SignUp:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   const{ handleSubmit, reset, register, formState:{errors, isValid}} = useForm({mode:'onTouched'})
   const validParams = {
     firstName:{

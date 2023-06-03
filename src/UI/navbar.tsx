@@ -23,7 +23,7 @@ background-color: ${({theme})=>theme.colors.bc};
 }
 `
 export const Navbar:FC = ()=>{
-  const isEnglish = useSelector((state:StateType)=>state.theme.language=='English')
+  const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return(
     <NavbarStyled>
       <div className="title">{isEnglish?'Forms':'Формы'}</div>
