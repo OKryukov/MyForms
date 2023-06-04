@@ -21,6 +21,32 @@ const AboutDropdownStyled = styled.div`
     font-weight: 600;
   }
 }
+.dropdown__current-gray{
+  background-color: #f2f7fae1;
+  span{
+    color: black;
+  }
+  svg{
+      fill: black;
+  }
+  :hover{
+    background-color: #f2f7fae1;
+  }
+}
+.dropdown__list{
+  position: absolute;
+  background-color: #f2f7fae1;
+  border-radius: 4px;
+  padding: 8px 0;
+  display: grid;
+}
+.dropdown__item{
+  padding: 8px 12px;
+  cursor: pointer;
+  :hover{
+    background-color: #c4c8cadf;
+  }
+}
 span{
   color: #d1d1f0;
 }
@@ -49,7 +75,7 @@ const AboutDropdown:FC = ()=>{
   }
   return(
     <AboutDropdownStyled>
-      <button className='dropdown__current' onClick={aboutClickHandler}>
+      <button className={isSelected?'dropdown__current dropdown__current-gray':'dropdown__current'} onClick={aboutClickHandler}>
         <span>About GitLab</span>
         <div className={isSelected?'svg rotate':'svg'}>
           <DropdownSVG/>
