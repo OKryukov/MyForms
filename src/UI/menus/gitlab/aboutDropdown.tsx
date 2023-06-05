@@ -5,10 +5,13 @@ import { StateType } from '../../../BLL/store';
 import { DropdownSVG } from '../../commons/svgStorage';
 
 const AboutDropdownStyled = styled.div`
+position: relative;
+z-index: 2;
+overflow: visible;
 .dropdown__current{
   cursor: pointer;
-  height: 40px;
-  padding: 10px;
+  height: 32px;
+  padding: 6px 8px;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -23,6 +26,8 @@ const AboutDropdownStyled = styled.div`
 }
 .dropdown__current-gray{
   background-color: #f2f7fae1;
+  outline: #007bff solid 3px;
+  outline-offset: 1px;
   span{
     color: black;
   }
@@ -34,6 +39,7 @@ const AboutDropdownStyled = styled.div`
   }
 }
 .dropdown__list{
+  top: 48px;
   position: absolute;
   background-color: #f2f7fae1;
   border-radius: 4px;
@@ -61,6 +67,7 @@ svg{
 .svg{
   display: flex;
   align-items: center;
+  width: 16px;
 }
 .rotate{
   transform: rotate(180deg);
