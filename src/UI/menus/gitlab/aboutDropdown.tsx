@@ -17,6 +17,7 @@ overflow: visible;
   align-items: center;
   gap: 10px;
   border-radius: 4px;
+  font-size: 14px;
   :hover{
     background-color: #6666c4;
   }
@@ -39,8 +40,9 @@ overflow: visible;
   }
 }
 .dropdown__list{
-  top: 48px;
+  width: 238px;
   position: absolute;
+  top: 48px;
   background-color: #f2f7fae1;
   border-radius: 4px;
   padding: 8px 0;
@@ -82,7 +84,7 @@ const AboutDropdown:FC = ()=>{
   }
   return(
     <AboutDropdownStyled>
-      <button className={isSelected?'dropdown__current dropdown__current-gray':'dropdown__current'} onClick={aboutClickHandler}>
+      <button className={isSelected?'dropdown__current dropdown__current-gray':'dropdown__current'} onBlur={aboutClickHandler} onClick={aboutClickHandler}>
         <span>About GitLab</span>
         <div className={isSelected?'svg rotate':'svg'}>
           <DropdownSVG/>

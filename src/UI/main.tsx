@@ -26,7 +26,7 @@ export const Main:FC = ()=>{
         <Route path="/habr/forms/*" element={<LazyHabrForm/>}/>
         <Route path="/gitlab/forms/*" element={<LazyGitlabForm/>}/>
         <Route path="/myprofile" element={<MyProfile/>}/>
-        <Route path="/gitLab/menu" element={<LazyGitlabMenu/>}/>
+        <Route path="/gitLab/menu/*" element={<LazyGitlabMenu/>}/>
         <Route path="/habr/menu" element={<LazyHabrMenu/>}/>
       </Routes>
     </MainStyled>
