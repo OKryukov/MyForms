@@ -2,6 +2,8 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BurgerSVG } from '../../commons/svgStorage'
+import { Question } from './question'
+import { Burger } from './burger'
 
 const HeaderRightStyled = styled.div`
 justify-self: end;
@@ -40,7 +42,9 @@ export const HeaderRight:FC = ()=>{
     <HeaderRightStyled>
       <div className="support"></div>
       <button className="burger">
+        <Question/>
         <BurgerSVG/>
+        <Burger/>
       </button>
       <Link to={'/signup'} className="signUp">Register</Link>
       <Link to={'/signin'} className="signIn">Sign in</Link>
