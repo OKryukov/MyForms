@@ -7,20 +7,9 @@ import { Burger } from './burger'
 
 const HeaderRightStyled = styled.div`
 justify-self: end;
-.burger{
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  background-color: transparent;
-  border-radius: 4px;
-  :hover{
-    background-color: #6666c4;
-  }
-  svg{
-    width: 20px;
-    fill: #d1d1f0;
-  }
-}
+display: flex;
+align-items: center;
+overflow: visible;
 .signUp, .signIn{
   display: inline-block;
   border-radius: 4px;
@@ -42,8 +31,7 @@ export const HeaderRight:FC = ()=>{
     <HeaderRightStyled>
       <div className="support"></div>
       <button className="burger">
-        <Question/>
-        <BurgerSVG/>
+        {/* <Question/> */}
         <Burger/>
       </button>
       <Link to={'/signup'} className="signUp">Register</Link>
