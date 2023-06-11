@@ -23,7 +23,7 @@ const initialState = {
   skills:{
     frontend:['HTML','JS','TS','CSS','React','Redux','Redux Saga','Redux Thunk','React Redux','React Router DOM',
     'React Hook Form','ClassNames','Reselect','Styled Components','Axios'],
-    backend:['Node JS','Express','GraphQL','MongoDB'],
+    backend:['Node JS','Express','GraphQL','MongoDB', 'SQL'],
     other:['Webpack','Phyton','jQuery','Git'],
   }
 }
