@@ -8,6 +8,7 @@ import { Burger } from './burger'
 const HeaderRightStyled = styled.div`
 justify-self: end;
 display: flex;
+gap: 8px;
 align-items: center;
 overflow: visible;
 .signUp, .signIn{

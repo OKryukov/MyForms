@@ -9,6 +9,7 @@ const GitlabMenuStyled = styled.div`
 height: 100%;
 .header{
   width: 100%;
+  padding: 0 16px;
   overflow: visible;
   height: 72px;
   border-radius: 4px;

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 const HeaderLeftStyled = styled.div`
 height: 100%;
-padding: 0 12px;
 display: grid;
 grid-template-columns: 42px repeat(3,max-content);
 align-items: center;
