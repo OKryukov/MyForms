@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BurgerSVG, DoorSVG, GroupsSVG, ScissorsSVG, TagsSVG } from '../../commons/svgStorage'
@@ -28,6 +28,8 @@ svg{
 }
 .burger__list{
   position: absolute;
+  z-index: 3;
+  top: 83px;
   display: grid;
   padding: 8px;
   width: 240px;
@@ -57,14 +59,21 @@ svg{
     font-weight: 700;
   }
 }
+.display_none{
+  display: none;
+}
 `
 export const Burger:FC = ()=>{
+  const [isSelected, setIsSelected] = useState(false)
+  const clickHandler = ()=>{
+    isSelected?setIsSelected(false):setIsSelected(true)
+  }
   return(
     <BurgerStyled>
-      <button className="burger">
+      <button className="burger" onClick={clickHandler} onBlur={clickHandler}>
         <BurgerSVG/>
       </button>
-      <ul className="burger__list">
+      <ul className={isSelected?'burger__list':'burger__list display_none'}>
         <li className="burger__item">
           <span>Explore</span>
         </li>
