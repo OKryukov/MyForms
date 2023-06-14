@@ -32,9 +32,10 @@ overflow: visible;
 export const HeaderRight:FC = ()=>{
   return(
     <HeaderRightStyled>
-      <div className="support"></div>
+      <button className="question">
+        <Question/>
+      </button>
       <button className="burger">
-        {/* <Question/> */}
         <Burger/>
       </button>
       <Link to={'/signup'} className="signUp">Register</Link>
