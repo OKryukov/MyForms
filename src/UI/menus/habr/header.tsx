@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
 const HeaderStyled = styled.header`
 .header__container{
 max-width: 1144px;
@@ -31,6 +32,34 @@ padding: 0 25px;
         }
       }
     }
+    .searchAndProfile{
+      display: grid;
+      grid-template-columns: repeat(2, 24px);
+      grid-gap: 12px;
+      align-items: center;
+      svg{
+        fill: #929ca5;
+        transition: color 0.1s linear;
+        :hover{
+          fill: #007aff;
+        }
+      }
+      button, a{
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        cursor: pointer;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+      a svg{
+        width: 18px;
+      }
+      button svg{
+        width: 24px;
+      }
+    }
   }
 }
 `
@@ -51,15 +80,16 @@ export const Header:FC = ()=>{
         <div className="header__container">
           <ul className="menu">
           <li className="menu__item"><NavLink to={'allthreads'}>Все потоки</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Разработка</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Администрирование</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Дизайн</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Менеджмент</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Маркетинг</NavLink></li>
-          <li className="menu__item"><NavLink to={''}>Научпоп</NavLink></li>
+          <li className="menu__item"><NavLink to={'development'}>Разработка</NavLink></li>
+          <li className="menu__item"><NavLink to={'administration'}>Администрирование</NavLink></li>
+          <li className="menu__item"><NavLink to={'design'}>Дизайн</NavLink></li>
+          <li className="menu__item"><NavLink to={'management'}>Менеджмент</NavLink></li>
+          <li className="menu__item"><NavLink to={'marketing'}>Маркетинг</NavLink></li>
+          <li className="menu__item"><NavLink to={'sciencepop'}>Научпоп</NavLink></li>
           </ul>
           <div className="searchAndProfile">
-            search
+            <Link to='search'><HabrSearchSVG/></Link>
+            <button><HabrProfileSVG/></button>
           </div>
         </div>
       </div>
