@@ -1,12 +1,14 @@
 import { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
+import { HabrCalendarSVG, HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
 const HeaderStyled = styled.header`
+overflow: visible;
 .header__container{
 max-width: 1144px;
 margin: 0 auto;
 padding: 0 25px;
+overflow: visible;
 }
 .header__top{
   height: 48px;
@@ -15,6 +17,7 @@ padding: 0 25px;
 .header__bottom{
   background-color: #fff;
   border-bottom: 1px solid #dedede;
+  overflow: visible;
   .header__container{
     height: 57px;
     display: flex;
@@ -37,6 +40,7 @@ padding: 0 25px;
       grid-template-columns: repeat(2, 24px);
       grid-gap: 12px;
       align-items: center;
+      overflow: visible;
       svg{
         fill: #929ca5;
         transition: color 0.1s linear;
@@ -58,6 +62,19 @@ padding: 0 25px;
       }
       button svg{
         width: 24px;
+      }
+    }
+    .profile{
+      overflow: visible;
+    }
+    .profile__list{
+      position: absolute;
+      width: 300px;
+      .profile__item{
+        width: 100%;
+        button{
+          width: 100px;
+        }
       }
     }
   }
@@ -89,7 +106,25 @@ export const Header:FC = ()=>{
           </ul>
           <div className="searchAndProfile">
             <Link to='search'><HabrSearchSVG/></Link>
-            <button><HabrProfileSVG/></button>
+            <div className="profile">
+              <button><HabrProfileSVG/></button>
+              <ul className="profile__list">
+                <li className="profile__item"></li>
+                <li className="profile__item">
+                  <button>Как стать автором</button>
+                </li>
+                <li className="profile__item">
+                  <button>Правила сайта</button>
+                </li>
+                <li className="profile__item">
+                  <button>
+                    <HabrCalendarSVG/>
+                    <span>Язык, лента</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
           </div>
         </div>
       </div>
