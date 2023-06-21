@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { HabrCalendarSVG, HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
+import { ProfileBurger } from "./profileBurger";
 const HeaderStyled = styled.header`
 overflow: visible;
 .header__container{
@@ -64,19 +65,6 @@ overflow: visible;
         width: 24px;
       }
     }
-    .profile{
-      overflow: visible;
-    }
-    .profile__list{
-      position: absolute;
-      width: 300px;
-      .profile__item{
-        width: 100%;
-        button{
-          width: 100px;
-        }
-      }
-    }
   }
 }
 `
@@ -108,23 +96,8 @@ export const Header:FC = ()=>{
             <Link to='search'><HabrSearchSVG/></Link>
             <div className="profile">
               <button><HabrProfileSVG/></button>
-              <ul className="profile__list">
-                <li className="profile__item"></li>
-                <li className="profile__item">
-                  <button>Как стать автором</button>
-                </li>
-                <li className="profile__item">
-                  <button>Правила сайта</button>
-                </li>
-                <li className="profile__item">
-                  <button>
-                    <HabrCalendarSVG/>
-                    <span>Язык, лента</span>
-                  </button>
-                </li>
-              </ul>
+              <ProfileBurger/>
             </div>
-            
           </div>
         </div>
       </div>
