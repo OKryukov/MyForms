@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { HabrCalendarSVG, HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
+import { HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
 import { ProfileBurger } from "./profileBurger";
 const HeaderStyled = styled.header`
 overflow: visible;

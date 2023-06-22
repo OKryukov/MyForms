@@ -7,7 +7,9 @@ const ProfileBurgerStyled = styled.div`
 position: absolute;
 width: 300px;
 background-color: #966e6e;
-a{overflow: visible;}
+a{
+  overflow: visible;
+}
 .item{
   overflow: visible;
 }
