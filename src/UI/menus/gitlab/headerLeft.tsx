@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import { GitlabLogo } from './logo'
-import AboutDropdown from './aboutDropdown'
+import { GitlabLogo } from './components/logo'
+import AboutDropdown from './components/aboutDropdown'
 import { Link } from 'react-router-dom'
 
 

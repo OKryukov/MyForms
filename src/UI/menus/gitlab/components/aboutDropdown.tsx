@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
-import { StateType } from '../../../BLL/store';
-import { DropdownSVG } from '../../commons/svgStorage';
+import { StateType } from '../../../../BLL/store';
+import { DropdownSVG } from '../../../commons/svgStorage';
 
 const AboutDropdownStyled = styled.div`
 position: relative;

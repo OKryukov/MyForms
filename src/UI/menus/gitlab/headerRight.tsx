@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BurgerSVG } from '../../commons/svgStorage'
-import { Question } from './question'
-import { Burger } from './burger'
+import { Question } from './components/question'
+import { Burger } from './components/burger'
 
 const HeaderRightStyled = styled.div`
 justify-self: end;

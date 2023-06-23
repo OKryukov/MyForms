@@ -15,7 +15,7 @@ grid-gap: ${({theme})=>theme.gaps.extraLarge};
 const NpmjsForm:FC = ()=>{
   return(
     <FormsStyled>
-      <Switcher baseURL="/npmjs.com"/>
+      <Switcher baseURL="/npmjs/forms"/>
       <Routes>
         <Route path="/" element={<Information/>}/>
         <Route path="/signup" element={<SignUpForm/>}/>

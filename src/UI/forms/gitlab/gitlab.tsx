@@ -14,7 +14,7 @@ height: 100%;
 const Gitlab:FC = ()=>{
   return(
     <GitlabStyled>
-      <Switcher baseURL='/gitlab.com'/>
+      <Switcher baseURL='/gitlab/forms'/>
       <Routes>
         <Route path='/' element={<Information/>} />
         <Route path='/signin' element={<SignIn/>} />

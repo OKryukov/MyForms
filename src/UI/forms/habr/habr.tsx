@@ -15,7 +15,7 @@ grid-gap: ${({theme})=>theme.gaps.extraLarge};
 const HabrForm:FC = ()=>{
   return(
     <FormsStyled>
-      <Switcher baseURL="/habr.com"/>
+      <Switcher baseURL="/habr/forms"/>
       <Routes>
         <Route path="/" element={<InformationContainer/>}/>
         <Route path="/signup" element={<SignUpForm/>}/>

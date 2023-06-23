@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import styled from 'styled-components'
-import { DotSVG, DropdownSVG, QuestionSVG } from '../../commons/svgStorage'
+import { DotSVG, DropdownSVG, QuestionSVG } from '../../../commons/svgStorage'
 const QuestionStyled = styled.div`
 background-color: #292961;
 

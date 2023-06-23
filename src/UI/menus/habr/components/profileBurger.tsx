@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { HabrCalendarSVG } from "../../commons/svgStorage";
+import { HabrCalendarSVG } from "../../../commons/svgStorage";
 import { Link } from "react-router-dom";
 
 const ProfileBurgerStyled = styled.div`

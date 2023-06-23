@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { BurgerSVG, DoorSVG, GroupsSVG, ScissorsSVG, TagsSVG } from '../../commons/svgStorage'
+import { BurgerSVG, DoorSVG, GroupsSVG, ScissorsSVG, TagsSVG } from '../../../commons/svgStorage'
 
 const BurgerStyled = styled.div`
 background-color: #292961;
