@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import styled from "styled-components";
 
-const HeaderTopRightStyled = styled.div`
+const HeaderRightStyled = styled.div`
   
 `
-export const HeaderTopRight:FC = ()=>{
+export const HeaderRight:FC = ()=>{
   return(
-    <HeaderTopRightStyled>
-      HeaderTopRight
-    </HeaderTopRightStyled>
+    <HeaderRightStyled>
+      HeaderRight
+    </HeaderRightStyled>
   )
 }

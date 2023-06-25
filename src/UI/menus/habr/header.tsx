@@ -3,6 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
 import { ProfileBurger } from "./components/profileBurger";
+
+import { HeaderLeft } from './headerLeft'
+import { HeaderRight } from './headerRight'
+
 const HeaderStyled = styled.header`
 overflow: visible;
 .header__container{
