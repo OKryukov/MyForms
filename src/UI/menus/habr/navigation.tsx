@@ -9,6 +9,9 @@ border-bottom: 1px solid #dedede;
 overflow: visible;
 .container{
   height: 57px;
+  max-width: 1144px;
+  padding: 0 25px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { StateType } from '../../../BLL/store';
 import { Header } from './header';
 import { Main } from './main';
+import { Navigation } from './navigation';
 
 const HabrMenuStyled = styled.div`
   
@@ -12,8 +13,8 @@ const HabrMenu:FC = ()=>{
   const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')
   return(
     <HabrMenuStyled>
-      HabrMenu
       <Header/>
+      <Navigation/>
       <Main/>
     </HabrMenuStyled>
   )

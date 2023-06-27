@@ -5,13 +5,18 @@ import { HeaderRight } from './headerRight'
 
 const HeaderStyled = styled.header`
 height: 48px;
+width: 100%;
 background-color: #303b44;
 overflow: visible;
 .container{
 max-width: 1144px;
+height: 100%;
 margin: 0 auto;
 padding: 0 25px;
 overflow: visible;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 `
@@ -20,11 +25,8 @@ export const Header:FC = ()=>{
   return(
     <HeaderStyled>
       <div className="container">
-        <div className="header__logo"></div>
-        <div className="header__delimiter"></div>
-        <div className="header__burger"></div>
-        <div className="header__question"></div>
-        <div className="header__news"></div>
+        <HeaderLeft/>
+        <HeaderRight/>
       </div>
     </HeaderStyled>
   )
