@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import habrPath from '../../../BLL/images/habrPath.png'
 
@@ -7,6 +7,11 @@ const HeaderLeftStyled = styled.div`
 display: grid;
 grid-template-columns: repeat(5, max-content);
 align-items: center;
+.logo{
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
 .header__question{
   padding: 6px 8px;
   border: 1px solid #6f7577;
@@ -40,7 +45,7 @@ align-items: center;
 export const HeaderLeft:FC = ()=>{
   return(
     <HeaderLeftStyled>
-      <div className="header__logo"></div>
+      <Link to='/home' className="logo">Хабр</Link>
       <div className="header__delimiter"></div>
       <div className="header__burger"></div>
       <Link to='/questions' className="header__question">Как стать автором</Link>

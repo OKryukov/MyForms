@@ -11,14 +11,17 @@ li{
   color: #909090;
   transition: color 0.1s linear;
   :hover{
-    color: #007aff;
+    color: #548eaa;
+  }
+  .active{
+    color: black;
   }
 }
 `
 export const NavigationLeft:FC = ()=>{
   return(
     <NavigationLeftStyled>
-      <li><NavLink to={'allthreads'}>Все потоки</NavLink></li>
+      <li><NavLink to={'/habr/menu'}>Все потоки</NavLink></li>
       <li><NavLink to={'development'}>Разработка</NavLink></li>
       <li><NavLink to={'administration'}>Администрирование</NavLink></li>
       <li><NavLink to={'design'}>Дизайн</NavLink></li>
