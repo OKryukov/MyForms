@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import habrPath from '../../../BLL/images/habrPath.png'
+import { DropdownSVG } from '../../commons/svgStorage';
 
 const HeaderLeftStyled = styled.div`
 display: grid;
@@ -11,6 +12,27 @@ align-items: center;
   color: white;
   font-size: 24px;
   font-weight: 600;
+  margin-right: 8px;
+}
+.header__burger{
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  svg{
+    width: 15px;
+    fill: white;
+  }
+  ::before{
+    content: '';
+    width: 4px;
+    height: 24px;
+    display: inline-block;
+    border-left: 1px solid hsla(0,0%,100%,.24);
+  }
 }
 .header__question{
   padding: 6px 8px;
@@ -19,7 +41,7 @@ align-items: center;
   text-transform: uppercase;
   font-size: 14px;
   color: white;
-  margin-right: 20px;
+  margin:0 20px 0 10px;
   :hover{
     border-color: white;
   }
@@ -47,7 +69,9 @@ export const HeaderLeft:FC = ()=>{
     <HeaderLeftStyled>
       <Link to='/home' className="logo">Хабр</Link>
       <div className="header__delimiter"></div>
-      <div className="header__burger"></div>
+      <button className="header__burger">
+        <DropdownSVG/>
+      </button>
       <Link to='/questions' className="header__question">Как стать автором</Link>
       <Link to='/career' className="header__path">
         <img src={habrPath}/>
