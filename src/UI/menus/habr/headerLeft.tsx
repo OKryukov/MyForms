@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import habrPath from '../../../BLL/images/habrPath.png'
@@ -14,24 +14,48 @@ align-items: center;
   font-weight: 600;
   margin-right: 8px;
 }
-.header__burger{
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: transparent;
-  svg{
-    width: 15px;
-    fill: white;
-  }
-  ::before{
-    content: '';
-    width: 4px;
+.burger{
+  .burger__button{
+    width: 24px;
     height: 24px;
-    display: inline-block;
-    border-left: 1px solid hsla(0,0%,100%,.24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    svg{
+      width: 15px;
+      fill: white;
+    }
+    ::before{
+      content: '';
+      width: 4px;
+      height: 24px;
+      display: inline-block;
+      border-left: 1px solid hsla(0,0%,100%,.24);
+    }
+  }
+  .burger__list{
+    position: absolute;
+    width: 300px;
+    padding: 12px 0;
+    background-color: white;
+    border-radius: 4px;
+    .burger__item{
+      padding: 12px 24px;
+      cursor: pointer;
+      :hover{
+        background-color: #90909085;
+      }
+      .title{
+      font-size: 20px;
+      color: #333;
+      }
+      .description{
+        font-size: 14px;
+        color: #909090;
+      }
+    }
   }
 }
 .header__question{
@@ -65,13 +89,38 @@ align-items: center;
 }
 `
 export const HeaderLeft:FC = ()=>{
+  const [isActive, setIsActive] = useState(false)
+  const burgerClickHandler = ()=>{
+    setIsActive(isActive?false:true)
+  }
   return(
     <HeaderLeftStyled>
       <Link to='/home' className="logo">Хабр</Link>
       <div className="header__delimiter"></div>
-      <button className="header__burger">
-        <DropdownSVG/>
-      </button>
+      <div className="burger">
+        <button className="burger__button" onClick={burgerClickHandler}>
+          <DropdownSVG/>
+        </button>
+        <ul className='burger__list'>
+          <li className='burger__item'>
+            <div className="title">Хабр</div>
+            <div className="description">Сообщество IT-специалистов</div>
+          </li>
+          <li className='burger__item'>
+            <div className="title">Q&A</div>
+            <div className="description">Ответы на любые вопросы об IT</div>
+          </li>
+          <li className='burger__item'>
+            <div className="title">Карьера</div>
+            <div className="description">Профессиональное развитие в IT</div>
+          </li>
+          <li className='burger__item'>
+            <div className="title">Фриланс</div>
+            <div className="description">Удаленная работа для IT-специалистов</div>
+          </li>
+        </ul>
+      </div>
+
       <Link to='/questions' className="header__question">Как стать автором</Link>
       <Link to='/career' className="header__path">
         <img src={habrPath}/>
