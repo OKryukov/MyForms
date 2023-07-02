@@ -37,6 +37,7 @@ align-items: center;
   }
   .burger__list{
     position: absolute;
+    top: 63px;
     width: 300px;
     padding: 12px 0;
     background-color: white;
@@ -45,7 +46,7 @@ align-items: center;
       padding: 12px 24px;
       cursor: pointer;
       :hover{
-        background-color: #90909085;
+        background-color: #c0bebe85;
       }
       .title{
       font-size: 20px;
@@ -56,6 +57,9 @@ align-items: center;
         color: #909090;
       }
     }
+  }
+  .none{
+    display: none;
   }
 }
 .header__question{
@@ -98,10 +102,10 @@ export const HeaderLeft:FC = ()=>{
       <Link to='/home' className="logo">Хабр</Link>
       <div className="header__delimiter"></div>
       <div className="burger">
-        <button className="burger__button" onClick={burgerClickHandler}>
+        <button className="burger__button" onClick={burgerClickHandler} onBlur={burgerClickHandler}>
           <DropdownSVG/>
         </button>
-        <ul className='burger__list'>
+        <ul className={isActive?'burger__list':'burger__list none'}>
           <li className='burger__item'>
             <div className="title">Хабр</div>
             <div className="description">Сообщество IT-специалистов</div>
