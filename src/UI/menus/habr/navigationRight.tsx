@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styled from "styled-components";
-import { HabrProfileSVG, HabrSearchSVG } from "../../commons/svgStorage";
+import { HabrSearchSVG } from "../../commons/svgStorage";
 import { ProfileBurger } from "./components/profileBurger";
 import { Link } from "react-router-dom";
 
@@ -29,16 +29,13 @@ button, a{
 a svg{
   width: 18px;
 }
-button svg{
-  width: 24px;
-}
+
 `
 export const NavigationRight:FC = ()=>{
   return(
     <NavigationRightStyled>
       <Link to='search'><HabrSearchSVG /></Link>
       <div className="profile">
-        <button><HabrProfileSVG /></button>
         <ProfileBurger />
       </div>
     </NavigationRightStyled>

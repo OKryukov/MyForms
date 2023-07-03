@@ -1,12 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
-import { HabrCalendarSVG } from "../../../commons/svgStorage";
+import { HabrCalendarSVG, HabrProfileSVG } from "../../../commons/svgStorage";
 import { Link } from "react-router-dom";
 
 const ProfileBurgerStyled = styled.div`
-position: absolute;
-width: 300px;
-background-color: #966e6e;
+.list{
+  position: absolute;
+  top: 120px;
+  width: 300px;
+  border-radius: 4px;
+  padding: 12px 0;
+  background-color: white;
+
+}
+.hide{
+  display: none;
+}
+button svg{
+  width: 24px;
+}
 a{
   overflow: visible;
 }
@@ -19,18 +31,25 @@ button{
 
 `
 export const ProfileBurger:FC = ()=>{
+  const [isSelected, setIsSelected] = useState(false)
+  const clickHandler = ()=>{
+    isSelected?setIsSelected(false):setIsSelected(true)
+  }
   return(
     <ProfileBurgerStyled>
-      <div className="item">
-        <Link to='/signin'>Войти</Link>
-        <Link to='/signup'>Регистрация</Link>
+      <button onClick={clickHandler} onBlur={clickHandler}><HabrProfileSVG/></button>
+      <div className={isSelected?'list':'list hide'}>
+        <div className="item">
+          <Link to='/signin'>Войти</Link>
+          <Link to='/signup'>Регистрация</Link>
+        </div>
+        <button className="item">Как стать автором</button>
+        <button className="item">Правила сайта</button>
+        <button className="item">
+          <HabrCalendarSVG />
+          <span>Язык, лента</span>
+        </button>
       </div>
-      <button className="item">Как стать автором</button>
-      <button className="item">Правила сайта</button>
-      <button className="item">
-        <HabrCalendarSVG/>
-        <span>Язык, лента</span>
-      </button>
     </ProfileBurgerStyled>
   )
 }
