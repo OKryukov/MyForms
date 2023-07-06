@@ -4,6 +4,9 @@ import { HabrCalendarSVG, HabrProfileSVG, HabrSearchSVG } from "../../commons/sv
 import { Link } from "react-router-dom";
 
 const NavigationRightStyled = styled.div`
+height: 100%;
+display: flex;
+align-items: center;
 .menu-right{
   display: grid;
   grid-template-columns: repeat(2, 24px);
@@ -19,6 +22,19 @@ const NavigationRightStyled = styled.div`
   }
 }
 .profile{
+  &>button{
+    background-color: transparent;
+    cursor: pointer;
+    svg{
+      width: 20px;
+      background-color: transparent;
+      fill: #929ca5;
+      transition: color 0.1s linear;
+      :hover{
+        fill: #007aff;
+      }
+    }
+  }
   .submenu{
     position: absolute;
     z-index: 5;
