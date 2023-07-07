@@ -43,6 +43,20 @@ align-items: center;
     border-radius: 4px;
     padding: 12px 0;
     background-color: white;
+    & button{
+      height: 48px;
+      width: 100%;
+      padding: 0 20px;
+      transition: background-color 0.1s linear;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      :hover{
+        background-color: #007bff24;
+        color: #548eaa;
+      }
+    }
   }
   .hide{
     display: none;
