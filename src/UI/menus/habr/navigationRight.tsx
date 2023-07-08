@@ -41,7 +41,7 @@ align-items: center;
     width: 300px;
     height: 264px;
     border-radius: 4px;
-    padding: 12px 0;
+    padding-bottom: 12px;
     background-color: white;
     & button{
       height: 48px;
@@ -52,10 +52,79 @@ align-items: center;
       font-size: 16px;
       display: flex;
       align-items: center;
+      background-color: transparent;
       :hover{
         background-color: #007bff24;
         color: #548eaa;
       }
+    }
+    .forms{
+      display: flex;
+      gap: 12px;
+      padding: 20px;
+      position: relative;
+      .signin a{
+        width: 68px;
+        height: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        border: 1px #548eaa solid;
+        color: #548eaa;
+      }
+      .signup a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 110px;
+        height: 34px;
+        border-radius: 3px;
+        background-color: #548eaa;
+        color: white;
+        :hover{
+          background-color: #709aae;
+        }
+      }
+    }
+    .forms::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #8080807a;
+      bottom: 0;
+      left: 0;
+    }
+    .language{
+      position: relative;
+      button{
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        svg{
+          width: 20px;
+          fill: #929ca5; 
+        }
+        span{
+          color: #929ca5;
+        }
+      }
+    }
+    .language::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #8080807a;
+      top: 0;
+      left: 0;
+    }
+    .question{
+      margin-top: 12px;
+    }
+    .rules{
+      margin-bottom: 12px;
     }
   }
   .hide{
@@ -83,13 +152,13 @@ export const NavigationRight:FC = ()=>{
               <div className="signin"><Link to={'signin'}>Войти</Link></div>
               <div className="signup"><Link to={'signup'}>Регистрация</Link></div>
             </li>
-            <li>
+            <li className='question'>
               <button className="item">Как стать автором</button>
             </li>
-            <li>
+            <li className='rules'>
               <button className="item">Правила сайта</button>
             </li>
-            <li>
+            <li className='language'>
               <button className="item">
                 <HabrCalendarSVG />
                 <span>Язык, лента</span>
