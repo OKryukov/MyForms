@@ -4,10 +4,12 @@ import { HabrCalendarSVG, HabrProfileSVG, HabrSearchSVG } from "../../commons/sv
 import { Link } from "react-router-dom";
 
 const NavigationRightStyled = styled.div`
+overflow: visible;
 height: 100%;
 display: flex;
 align-items: center;
 .menu-right{
+  overflow: visible;
   display: grid;
   grid-template-columns: repeat(2, 24px);
   grid-gap: 12px;
@@ -22,6 +24,8 @@ align-items: center;
   }
 }
 .profile{
+  position: relative;
+  overflow: visible;
   &>button{
     background-color: transparent;
     cursor: pointer;
@@ -37,12 +41,16 @@ align-items: center;
   }
   .submenu{
     position: absolute;
+    right: 0;
+    top: 34px;
     z-index: 5;
     width: 300px;
     height: 264px;
     border-radius: 4px;
     padding-bottom: 12px;
     background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,.16);
+    overflow: visible;
     & button{
       height: 48px;
       width: 100%;
@@ -53,6 +61,7 @@ align-items: center;
       display: flex;
       align-items: center;
       background-color: transparent;
+      transition: all 0.1s linear;
       :hover{
         background-color: #007bff24;
         color: #548eaa;
@@ -82,6 +91,7 @@ align-items: center;
         border-radius: 3px;
         background-color: #548eaa;
         color: white;
+        transition: background-color 0.1s linear;
         :hover{
           background-color: #709aae;
         }

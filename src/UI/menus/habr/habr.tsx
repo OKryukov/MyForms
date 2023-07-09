@@ -7,7 +7,7 @@ import { Main } from './main';
 import { Navigation } from './navigation';
 
 const HabrMenuStyled = styled.div`
-  
+  overflow: visible;
 `
 const HabrMenu:FC = ()=>{
   const isEnglish = useSelector((state:StateType)=>state.theme.language==='English')

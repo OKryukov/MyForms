@@ -8,6 +8,7 @@ background-color: #fff;
 border-bottom: 1px solid #dedede;
 overflow: visible;
 .container{
+  overflow: visible;
   height: 57px;
   max-width: 1144px;
   padding: 0 25px;
