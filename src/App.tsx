@@ -16,7 +16,7 @@ position: relative;
 height: 100vh;
 display: grid;
 grid-template-columns: 245px 1fr 50px;
-grid-template-rows: 50px 1fr 130px;
+grid-template-rows: 50px 1fr 170px;
 grid-template-areas:'home main links' 'navbar main links' 'footer main links';
 grid-gap: ${({theme})=>theme.gaps.extraLarge};
 padding: ${({theme})=>theme.gaps.extraLarge+" 0 "+theme.gaps.extraLarge+" "+theme.gaps.extraLarge};

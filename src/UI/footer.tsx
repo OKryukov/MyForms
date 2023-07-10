@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NavItem } from "./commons/navItem";
 import { useSelector } from "react-redux";
 import { StateType } from "../BLL/store";
-
+import allInstrumentsLogo from '../BLL/images/all_instruments.svg'
 const FooterStyled = styled.footer`
 grid-area: footer;
 display: grid;
@@ -29,6 +29,7 @@ export const Footer:FC = ()=>{
       <div className="title">{isEnglish?'Menu':'Меню'}</div>
       <NavItem to={"gitLab/menu"} title="GitLab" img="https://gitlab.com/assets/logo-911de323fa0def29aaf817fca33916653fc92f3ff31647ac41d2c39bbe243edb.svg"/>
       <NavItem to={"habr/menu"} title="Habr" img="https://habr.com/img/maskable_icon.png"/>
+      <NavItem to={"allInstruments/menu"} title="Все инструменты" img={allInstrumentsLogo}/>
     </FooterStyled>
   )
 }

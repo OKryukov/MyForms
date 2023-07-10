@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Routes, Route } from "react-router-dom"
 import { MyProfile } from "./profile";
 import { withSuspense } from "./commons/hocs";
+import { AllInstruments } from "./menus/allInstruments/allInstruments";
 
 const NpmjsForm = lazy(()=>import("./forms/npmjs/npmjs"));
 const HabrForm = lazy(()=>import("./forms/habr/habr"))
@@ -28,6 +29,7 @@ export const Main:FC = ()=>{
         <Route path="/myprofile" element={<MyProfile/>}/>
         <Route path="/gitLab/menu/*" element={<LazyGitlabMenu/>}/>
         <Route path="/habr/menu" element={<LazyHabrMenu/>}/>
+        <Route path="/allinstruments/menu" element={<AllInstruments/>}/>
       </Routes>
     </MainStyled>
   )
